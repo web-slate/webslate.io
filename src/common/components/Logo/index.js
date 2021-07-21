@@ -8,7 +8,7 @@ function Logo({ type = "header-logo" }) {
   return (
     <>
       <Link href="/" className="link">
-        <img src="webslate.jpg" alt="Web Slate.io" className={type} />
+        <img src="images/webslate.jpg" alt="Web Slate.io" className={type} />
       </Link>
     </>
   );

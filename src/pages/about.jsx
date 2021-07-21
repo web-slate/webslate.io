@@ -15,7 +15,7 @@ function AboutUs() {
         <Logo />
         <Menu />
         <h1>👋 Hi, I'm Venkat.R</h1>
-        <img src="venkat.jpeg" className="photo" alt="Venkat.R" />
+        <img src="images/venkat.jpeg" className="photo" alt="Venkat.R" />
         <p>
           Happy to see you visting <a href="http://webslate.io/">WebSlate.IO</a>
           . I'm a JavaScript and web developer living in sunny Singapore creator
