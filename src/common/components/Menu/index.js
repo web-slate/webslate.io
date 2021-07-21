@@ -1,5 +1,5 @@
 function Menu() {
-  return <p><a href="/">Home</a> | <a href="about">Blog</a> | <a href="about">About</a> | <a href="contact">Contact</a></p>
+  return <p><a href="/">Home</a> | <a href="coming-soon">Blog</a> | <a href="about">About</a></p>
 }
 
 export default Menu;
