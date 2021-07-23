@@ -1,15 +1,14 @@
-import { PostItem } from "../../../common/components/Blog/PostItem";
-import { jsPosts } from "../../../getPostsByType";
-
 // Components.
-import Menu from "../../../common/components/Menu";
-import Logo from "../../../common/components/Logo";
+import { PostItem } from "../../../common/components/Blog/PostItem";
+import Header from "../../../common/components/Blog/Header";
+
+// Utils.
+import { jsPosts } from "../../../utils/getPostsByType";
 
 export default function JsHubPage() {
   return (
     <>
-      <Logo />
-      <Menu />
+      <Header title="Webslate.io - Javascript Articles"/>
       {jsPosts.map((post) => (
         <PostItem type="js" key={post.link} post={post} />
       ))}
