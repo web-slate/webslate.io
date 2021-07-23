@@ -1,0 +1,23 @@
+import Post from '../../../common/components/Blog/Post'
+
+export const meta = {
+  title: 'JS Promises Basics (Part 1)',
+  description: 'One of the good Features in ES6 is Promises Object and their useful methods and they are called software abstraction helps to works smoothly with asynchronous operations. Promise API followed Promises/A+ Specification prior to this, there was Promise/A.',
+  date: 'Oct 21, 2016',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+One of the good Features in ES6 is Promises Object and their useful methods and they are called software abstraction helps to works smoothly with asynchronous operations. Promise API followed Promises/A+ Specification prior to this, there was Promise/A.
+
+# What is Promises/A and Promises/A+ ?
+1. Both are specification for open standard but Javascript currently uses Promise/A+.
+1. The main three reason for using Promise/A+ is Three different states, Value for Fulfilment and for Rejection and thenable object. for more detail see Differences from Promises/A
+1. These Promise/A+ organisation occasionally revise and address the corner cases in to new Specification.
+
+# Difference between Promise/A and /A+?
+1. Rejection / Fulfilment method returns thenable object.
+1. Rejection triggers catch method, if errors thrown.
+
+In short, running continuation-passing style. Let me shoot few bullets with simple diagram on Promises below. 
