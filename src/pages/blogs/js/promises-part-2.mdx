@@ -1,0 +1,23 @@
+import Post from '../../../common/components/Blog/Post'
+
+export const meta = {
+  title: 'JS Promise (Part 2 - Q.js, When.js and RSVP.js)',
+  description: 'I would like to continue with an examination of JavaScript Promise API. Let’s have a look at Promise evolution by various libraries. below three libraries which we are going to explore on this article.',
+  date: 'Dec 5, 2016',
+  readTime: 5
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+I would like to continue with an examination of JavaScript Promise API. Let’s have a look at Promise evolution by various libraries. below three libraries which we are going to explore on this article.
+1. Q.js Library
+1. When.js Library
+1. RSVP.js Library
+
+# Using q.js
+The q.js is best one for promise implementation by Kris Kowal. It is more evident of promise evolution.
+
+Lets have a look, What makes it special.
+
+* It provides two ways to define the promise. one is very famous by Q.defer() and another one is Q.Promise().
+* The Q.defer() method is custom and flexible way to define promise like defining anywhere in the code likevar deferred = Q.defer(); and any time that can be resolved, rejected and notified (deferred.resolve, deferred.reject, deferred.notify).
