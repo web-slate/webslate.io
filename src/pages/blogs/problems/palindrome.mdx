@@ -1,0 +1,28 @@
+import Post from '../../../common/components/Blog/Post'
+
+export const meta = {
+  title: 'Palindrome Solutions',
+  description: 'Palindrome is in reverse also same',
+  date: 'Jul 21, 2020',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Below is the basic coding solution written in javascript.
+
+```javascript
+function isPalindrome(S) {
+  let iteration = Math.round(S.length / 2);
+  let backward = S.length;
+
+  for (let forward = 0; forward < iteration; forward++) {
+    backward--;
+    if (S[forward].toLowerCase() !== S[backward].toLowerCase()) {
+      return "NO";
+    }
+  }
+
+  return "YES";
+}
+```
