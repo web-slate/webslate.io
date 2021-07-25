@@ -16,3 +16,11 @@ export const htmlPosts = importAll(
 export const reactPosts = importAll(
   require.context('../pages/blogs/react', true, /\.mdx$/)
 );
+
+export const programmingPosts = importAll(
+  require.context('../pages/blogs/programming', true, /\.mdx$/)
+);
+
+export const problemsPosts = importAll(
+  require.context('../pages/blogs/problems', true, /\.mdx$/)
+);
