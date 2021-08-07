@@ -19,11 +19,12 @@ Table of Contents
    * [Properties](#properties)
    * [Solutions](#solutions)
       * [Recursive](#recursive)
-      * [Iterative](#iterative)
-      * [Dynamic Programming](#dyanamic-programming)
+      * [Dynamic Programming](#dynamic-programming)
+      * [Power of Matrix Approach](#power-of-matrix-approach)
+      * [Using Binet's Formula](#using-binets-formula)
    * [Other Facts](#other-facts)
       * [Planets Activity](#planets-activity)
-      * [Planets Activity](#planets-activity)
+      * [Golden Ratio (Phi)](#golden-ratio)
 
 > The Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones.
 
@@ -73,32 +74,103 @@ Before, lets look at the formulae.
 1. F<sub>0</sub> = 0, F<sub>1</sub> = 1 (initial conditions)
 2. Fn = F<sub>n-1</sub> + F<sub>n-2</sub>, n>=2 (Recurrence Relation)
 
-### <a name="properties">Recursive Approach</a>
+### 1. <a name="properties">Recursive Approach</a>
 Basically, this approach call itself creating more and more branches of the tree until it hits the base case.
 Below is the recursive solution in Javascript.
 
+**Time Complexity:** 2^n (exponential time)  
+**Space Complexity:** O(n) considering function call stack size, otherwise O(1).
+
 <CodeBlock>{`
-function fibo_1(n) {
+function fib_1(n) {
   if (n < 2) {
     return n
   }
-  return fibo_1(n - 1) + fibo_1(n - 2)
+  return fib_1(n - 1) + fib_1(n - 2)
 }
 `.trim()}</CodeBlock>
 
-### <a name="iterative">Iterative Approach</a>
+### 2. <a name="dynamic-programming">Dynamic Programming</a>
+1. Dynamic Programming is mainly an optimization over plain recursion. Wherever we see a recursive solution that has repeated calls for same inputs, we can optimize it using Dynamic Programming. 
+1. The idea is to simply store the results of sub problems to prevent re-computations of same inputs.
+1. This helps to reduces time complexities from exponential to polynomial.
+
+**Time Complexity:** O(n) 
+**Space Complexity:** O(1)
 
 <CodeBlock>{`
-function fibo_2(n) {
-  /* Declare an array to store Fibonacci numbers. */
-  let f = new Array(n + 2); // 1 extra to handle case, n = 0
-  let i;
-  f[0] = 0;
-  f[1] = 1;
+function fib_2(n) {
+  let a = 0, b = 1, c, i;
+  if (n == 0)
+    return a;
   for (i = 2; i <= n; i++) {
-    f[i] = f[i - 1] + f[i - 2];
+    c = a + b;
+    a = b;
+    b = c;
   }
-  return f[n]
+  return b;
+}
+`.trim()}</CodeBlock>
+
+### 3. <a name="power-of-matrix-approach">Power of Matrix Approach</a>
+
+**Time Complexity:** O(Logn)
+**Space Complexity:** O(1) or O(Logn) on function call stack size consideration.
+
+<CodeBlock>{`
+function fib(n) {
+  const F = [[1, 1], [1, 0]];
+  if (n == 0)
+    return 0;
+  power(F, n - 1);
+  return F[0][0];
+}
+// Helper function that multiplies 2
+// matrices F and M of size 2*2, and
+// puts the multiplication result
+// back to F[][]
+function multiply(F, M) {
+  const x = F[0][0] * M[0][0] + F[0][1] * M[1][0];
+  const y = F[0][0] * M[0][1] + F[0][1] * M[1][1];
+  const z = F[1][0] * M[0][0] + F[1][1] * M[1][0];
+  const w = F[1][0] * M[0][1] + F[1][1] * M[1][1];
+  F[0][0] = x;
+  F[0][1] = y;
+  F[1][0] = z;
+  F[1][1] = w;
+}
+// Helper function that calculates F[][]
+// raise to the power n and puts the
+// result in F[][]
+function power(F, n) {
+  const M = [[1, 1], [1, 0]];
+  // n - 1 times multiply the
+  // matrix to {{1,0},{0,1}}
+  for (let i = 2; i <= n; i++)
+    multiply(F, M);
+}
+// Optimized version of power() in method 4 */
+function power(F, n) {
+  if (n == 0 || n == 1)
+    return;
+  const M = [[1, 1], [1, 0]];
+  power(F, n / 2);
+  multiply(F, F);
+  if (n % 2 != 0)
+    multiply(F, M);
+}
+`.trim()}</CodeBlock>
+
+### 4 <a name="using-binets-formula">Using Binet's Formula</a>
+Binet formula, sums, combinatorial representations and generating function of the generalized Fibonacci -numbers.
+
+**Time Complexity:** O(logn), this is because calculating phi^n takes logn time.  
+**Space Complexity:** O(1)
+
+<CodeBlock>{`
+function fib_4(n) {
+  let phi = (1 + Math.sqrt(5)) / 2;
+  return Math.round(Math.pow(phi, n) / Math.sqrt(5));
 }
 `.trim()}</CodeBlock>
 
@@ -107,3 +179,19 @@ Let's look at the other facts where we used in real life.
 
 ### <a name="planets-activity">Planets Activity</a>
 Even our planet activities like Rotations period, Precession Period, Orbital Period are in fibonacci. Refer to Journal of Astronomy on <ExternalLink url="http://article.sapub.org/10.5923.j.astronomy.20190801.02.html">Modeling Celestial Mechanics Using the Fibonacci Numbers</ExternalLink>
+
+### <a name="golden-ratio">Golden Ratio (Phi)</a>
+In mathematics, two quantities are in the golden ratio if their ratio is the same as the ratio of their sum to the larger of the two quantities where F<sub>(n+1)</sub> / F<sub>n</sub> is most of the time is 1.618
+
+Golden ratio everywhere like example below.
+
+1. Flower petals
+1. Spiral of Pine Cone, Pineapple
+1. Storms spin in golden sequence
+1. Wave can be measured in this ratio.
+1. Planet alignment and spirals of our Milky way galaxy
+1. Shoulder to elbow and elbow to fingertips will be 1:1.6
+1. Finger tips to wrist and wrist to elbow
+1. bottom of fingertips to wrist
+1. Even your ears, brains, lungs system even helix of our DNA that forms rhythm of our hearbeat.
+1. Musical scales like piano.
