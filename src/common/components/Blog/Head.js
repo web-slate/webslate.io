@@ -9,7 +9,7 @@ export const Head = ({ meta, link, isBlogPost }) => (
       {isBlogPost ? null : <p>{meta.description}</p>}
       <span>{meta.date}</span>
       <span role="img" aria-label="one coffee">
-        ☕ {meta.readTime + " min read"}
+        ☕ {meta.readTime + " mins read"}
       </span>
     </div>
     <style jsx>

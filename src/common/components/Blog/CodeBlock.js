@@ -1,16 +1,7 @@
 import React from 'react'
-import { Wrapper, Pre, Line, LineNo, LineContent } from "./CodeBlockStyles";
+import { Wrapper, Pre, Line, LineNo, LineContent } from './CodeBlockStyles';
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from "prism-react-renderer/themes/nightOwl";
-
-const exampleCode = `
-function fibo_1(n) {
-  if (n < 2) {
-    return n
-  }
-  return fibo_1(n - 1) + fibo_1(n - 2)
-}
-`.trim();
+import theme from 'prism-react-renderer/themes/nightOwl';
 
 const CodeBlock = ({ children, language = 'javascript' }) => (
   <Wrapper>
