@@ -1,21 +1,109 @@
 import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
 
 export const meta = {
   title: 'Fibonacci Series',
   description: 'Fibonacci numbers, commonly denoted Fn sequence',
-  date: 'Jul 21, 2015',
+  date: 'Aug 7, 2021',
   readTime: 2 
 }
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
-Approach 1 with Recursion
+Table of Contents
+=================
 
-```js live=true
+   * [History](#history)
+      * [Problem of Rabbits](#problem-of-rabbits)
+   * [Properties](#properties)
+   * [Solutions](#solutions)
+      * [Recursive](#recursive)
+      * [Iterative](#iterative)
+      * [Dynamic Programming](#dyanamic-programming)
+   * [Other Facts](#other-facts)
+      * [Planets Activity](#planets-activity)
+      * [Planets Activity](#planets-activity)
+
+> The Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones.
+
+## <a name="history">History</a>
+1. <ExternalLink url="https://en.wikipedia.org/wiki/Fibonacci">Leonardo Bonacci</ExternalLink>, Italian Mathemetician from the Republic of Pisa studied with Muslim schoolmaster who introduced him to the Hindu-Arabic system of Enumeration along with computation. later he investigated various arithmetic sytems in Egypt, France, Greece, Rome and Syria.
+1. In 1202, he published his <ExternalLink url="https://en.wikipedia.org/wiki/Liber_Abaci">Liber Abaci</ExternalLink> (Book of Abacus), Practice of Geometry (1220), Book of Square Numbers (1225) and others etc.
+1. This sequence of numbers (0,1,1,2,3,5,8,13,21,34...) called Fibonacci Sequence which is contraction of Filius Bonacci (son of Bonacci).
+
+### <a name="problem-of-rabbits">Problem of Rabbits</a>
+Problem is about a person who has a pair of newborn rabbits (different gender). here problem to determine the numbers of pairs after a year. at the end of each month, a newborn pair grows to maturity. 
+
+- - -
+### Rabbits Population per year.
+|    | Newborn |  Matured |  Total |
+|----------|:-------------:|------:|------:|
+| Jan 1 |  1 | 0 | 1 |
+| Feb 1 |  0 | 1 | 1 |
+| Mar 1 |  1 | 1 | 2 |
+| Apr 1 |  1 | 2 | 3 |
+| May 1 |  2 | 3 | 5 |
+| Jun 1 |  3 | 5 | 8 |
+| Jul 1 |  5 | 8 | 13 |
+| Aug 1 |  8 | 13 | 21 |
+| Sep 1 |  13 | 21 | 34 |
+| Oct 1 |  21 | 34 | 55 |
+| Nov 1 |  34 | 55 | 89 |
+| Dec 1 |  55 | 89 | 144 |
+| Jan 1 |  89 | 144 | 233 |
+
+- - -
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X1L8XMTi_Vw" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+## <a name="properties">Properties</a>
+Finding the great common divisor of F5 = 5 and F6 = 8 is 1. This is due to the fact that only positive integer that divide F5 = 5 are 1 and 5 (denoted as gcd(F5, F6) = 1 likewise, F6 = 8 are 1,2,4 and 8 (denoted as gcd(F9, F10) = 1) there are common properties available. lets look at them.
+
+1. For n>=0, GCD(F<sub>n</sub>, F<sub>n+1</sub>) = 1
+1. For n>=0, GCD(F<sub>n</sub>, F<sub>n+2</sub>) = 1
+1. Sum of any six consecutive fibonacci numbers is divisible by 4
+1. Sum of 10 consecutive fibonacci numbers is divisible by 11
+1. and there is five more properties until 9.
+
+## <a name="solutions">Solutions</a>
+There is various kinds of approaches in order to get this sequence and there is many solutions available. lets see each of them with solutions written in javascript. 
+Before, lets look at the formulae.
+
+1. F<sub>0</sub> = 0, F<sub>1</sub> = 1 (initial conditions)
+2. Fn = F<sub>n-1</sub> + F<sub>n-2</sub>, n>=2 (Recurrence Relation)
+
+### <a name="properties">Recursive Approach</a>
+Basically, this approach call itself creating more and more branches of the tree until it hits the base case.
+Below is the recursive solution in Javascript.
+
+<CodeBlock>{`
 function fibo_1(n) {
   if (n < 2) {
     return n
   }
   return fibo_1(n - 1) + fibo_1(n - 2)
 }
-```
+`.trim()}</CodeBlock>
+
+### <a name="iterative">Iterative Approach</a>
+
+<CodeBlock>{`
+function fibo_2(n) {
+  /* Declare an array to store Fibonacci numbers. */
+  let f = new Array(n + 2); // 1 extra to handle case, n = 0
+  let i;
+  f[0] = 0;
+  f[1] = 1;
+  for (i = 2; i <= n; i++) {
+    f[i] = f[i - 1] + f[i - 2];
+  }
+  return f[n]
+}
+`.trim()}</CodeBlock>
+
+## <a name="other-facts">Other Facts</a>
+Let's look at the other facts where we used in real life.
+
+### <a name="planets-activity">Planets Activity</a>
+Even our planet activities like Rotations period, Precession Period, Orbital Period are in fibonacci. Refer to Journal of Astronomy on <ExternalLink url="http://article.sapub.org/10.5923.j.astronomy.20190801.02.html">Modeling Celestial Mechanics Using the Fibonacci Numbers</ExternalLink>
