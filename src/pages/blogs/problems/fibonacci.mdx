@@ -1,0 +1,21 @@
+import Post from '../../../common/components/Blog/Post'
+
+export const meta = {
+  title: 'Fibonacci Series',
+  description: 'Fibonacci numbers, commonly denoted Fn sequence',
+  date: 'Jul 21, 2015',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Approach 1 with Recursion
+
+```js live=true
+function fibo_1(n) {
+  if (n < 2) {
+    return n
+  }
+  return fibo_1(n - 1) + fibo_1(n - 2)
+}
+```
