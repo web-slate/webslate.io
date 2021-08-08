@@ -26,6 +26,7 @@ Table of Contents
       * [Planets Activity](#planets-activity)
       * [Golden Ratio (Phi)](#golden-ratio)
       * [Fibonacci Extension](#fibonacci-extension)
+      * [Fibonacci Retracement](#fibonacci-retracement)
 
 > The Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones.
 
@@ -79,7 +80,7 @@ Before, lets look at the formulae.
 Basically, this approach call itself creating more and more branches of the tree until it hits the base case.
 Below is the recursive solution in Javascript.
 
-**Time Complexity:** 2^n (exponential time)  
+**Time Complexity:** 2^n (exponential time). <br />
 **Space Complexity:** O(n) considering function call stack size, otherwise O(1).
 
 <CodeBlock>{`
@@ -96,8 +97,8 @@ function fib_1(n) {
 1. The idea is to simply store the results of sub problems to prevent re-computations of same inputs.
 1. This helps to reduces time complexities from exponential to polynomial.
 
-**Time Complexity:** O(n) 
-**Space Complexity:** O(1)
+**Time Complexity:** O(n). <br />
+**Space Complexity:** O(1). 
 
 <CodeBlock>{`
 function fib_2(n) {
@@ -115,8 +116,8 @@ function fib_2(n) {
 
 ### 3. <a name="power-of-matrix-approach">Power of Matrix Approach</a>
 
-**Time Complexity:** O(Logn)
-**Space Complexity:** O(1) or O(Logn) on function call stack size consideration.
+**Time Complexity:** O(Logn). <br />
+**Space Complexity:** O(1) or O(Logn) on function call stack size consideration. 
 
 <CodeBlock>{`
 function fib(n) {
@@ -198,3 +199,7 @@ Golden ratio everywhere like example below.
 1. Musical scales like piano.
 
 ### <a name="fibonacci-extension">Fibonacci Extension</a>
+Fibonacci extensions are a tool that traders can use to establish profit targets or estimate how far a price may travel after a retracement/pullback is finished. Extension levels are also possible areas where the price may reverse.
+
+### <a name="fibonacci-retracement">Fibonacci Retracement</a>
+In finance, Fibonacci retracement is a method of technical analysis for determining support and resistance levels.[1] They are named after their use of the Fibonacci sequence.
