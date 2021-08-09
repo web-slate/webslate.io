@@ -1,11 +1,23 @@
+import { MenuLinks } from '../../../utils/blogs';
+import styled from 'styled-components';
+
+const MenuWrapper = styled.div`
+  width: 82%;
+  margin-top: 35px;
+`;
+
 function Menu() {
   return (
-    <p>
-      <a href="/">Home</a> | <a href="/blogs/js">JavaScript</a> |{" "}
-      <a href="/blogs/html">HTML5</a> | <a href="/blogs/react">React</a> |{" "}
-      <a href="/blogs/programming">Programming</a> | <a href="/blogs/problems">Problems</a> |{" "}
-      <a href="/about">About</a>
-    </p>
+    <MenuWrapper>
+      {MenuLinks.map((linkItem, index) => {
+        return (
+          <span key={linkItem?.label}>
+            {index > 0 && ' | '}
+            {linkItem?.label && (<a href={linkItem?.url}>{linkItem?.label}</a>)}
+          </span>
+        )
+      })}
+    </MenuWrapper>
   );
 }
 

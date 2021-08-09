@@ -1,0 +1,71 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+import { textToHyphenated } from '../../../utils/common'
+
+export const meta = {
+  title: 'Big-O Notations',
+  description: 'Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. Big O is a member of a family of notations invented by Paul Bachmann.',
+  date: 'Aug 8, 2021',
+  readTime: 10 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Table of Contents
+=================
+
+   * [Why BigO Notations?](#why-big-o-notations)
+   * [Points To Remember](#points-to-remember)
+   * [Time Complexity](#time-complexity)
+      1. [Constant Time O(1)](#constant-time)
+      1. [Logarithmic Time O(log n)](#logarithmic-time-o(log-n))
+      1. [Linear Time O(n)](#linear-time)
+      1. [Linear Logarithmic Time O(n log n)](#linear-logarithmic-time)
+      1. [Quadratic Time O(n<sup>2</sup>)](#quadratic-time)
+      1. [Cubic Time O(n<sup>3</sup>)](#cubic-time)
+      1. [Exponential Time O(2n)](#exponential-time)
+   * [Space Complexity](#space-complexity)
+      * [come](#come-soon)
+
+> Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. Big O is a member of a family of notations invented by Paul Bachmann.
+
+## Why BigO Notations?
+Why aren't we comparing with time instead of these notations.
+1. Not every computer hardware is same. Due to this, efficient code takes long time to execute in old machine or in-efficient code execute quickly in high end machine. but that doesn't meant your code is efficient or in-efficient by evaluating through running time. so we need common notation for better evaluation.
+
+## Points To Remember
+1. There are Best, Average and Worst Cases.
+1. Always solve your problem with worst case scenario which is having complex input.
+1. With Big O Notation, we call the size of the input as `n`.
+
+## <AnchorLink label="Time Complexity" name />
+Time Complexity is computational complexity that describes the amount of computer time it takes to run an algorithm.
+
+### 1. Constant Time O(1)
+
+<CodeBlock>{`
+function sum(a, b) {
+  return a + b;
+}
+`}</CodeBlock>
+
+### 2. <AnchorLink label="Logarithmic Time O(log n)" name />
+Most efficient sorts are an example of this, such as merge sort. ​It is O(log n) and search such as Binary Search.
+
+<CodeBlock>{`
+function sum(a, b) {
+  return a + b;
+}
+`}</CodeBlock>
+
+### 3. Linear Time O(n)
+Simple multiply table if i pass `multiply(2)`
+<CodeBlock>{`
+function multiply(no) {
+  for(let i=0;i<=no;i++) {
+    console.log(i, ': ', i*no)
+  }
+}
+`}</CodeBlock>

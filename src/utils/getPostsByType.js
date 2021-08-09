@@ -24,3 +24,12 @@ export const programmingPosts = importAll(
 export const problemsPosts = importAll(
   require.context('../pages/blogs/problems', true, /\.mdx$/)
 );
+
+export const algorithmPosts = importAll(
+  require.context('../pages/blogs/algorithms', true, /\.mdx$/)
+);
+
+export const dataStructurePosts = importAll(
+  require.context('../pages/blogs/data-structures', true, /\.mdx$/)
+);
+
