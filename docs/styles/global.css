@@ -23,3 +23,7 @@ body {
 .photo {
   border-radius: 50%;
 }
+
+.postItemList {
+  margin: 0 35px;
+}
