@@ -12,9 +12,8 @@ function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="page">
-        <h1>Welcome to Webslate</h1>
-        <Menu />
         <Logo type="" />
+        <Menu noStyle={false} />
       </div>
     </>
   );

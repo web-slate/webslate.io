@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { MenuLinks } from '../../../utils/blogs';
 import styled from 'styled-components';
 
@@ -6,9 +7,10 @@ const MenuWrapper = styled.div`
   margin-top: 35px;
 `;
 
-function Menu() {
+function Menu({ noStyle = true }) {
+  const Wrapper = noStyle ? MenuWrapper : Fragment
   return (
-    <MenuWrapper>
+    <Wrapper>
       {MenuLinks.map((linkItem, index) => {
         return (
           <span key={linkItem?.label}>
@@ -17,7 +19,7 @@ function Menu() {
           </span>
         )
       })}
-    </MenuWrapper>
+    </Wrapper>
   );
 }
 

@@ -80,7 +80,7 @@ Before, lets look at the formulae.
 Basically, this approach call itself creating more and more branches of the tree until it hits the base case.
 Below is the recursive solution in Javascript.
 
-**Time Complexity:** 2^n (exponential time). <br />
+**Time Complexity:** O(2<sup>n</sup>) (exponential time). <br />
 **Space Complexity:** O(n) considering function call stack size, otherwise O(1).
 
 <CodeBlock>{`
@@ -120,7 +120,7 @@ function fib_2(n) {
 **Space Complexity:** O(1) or O(Logn) on function call stack size consideration. 
 
 <CodeBlock>{`
-function fib(n) {
+function fib_3(n) {
   const F = [[1, 1], [1, 0]];
   if (n == 0)
     return 0;

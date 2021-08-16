@@ -16,12 +16,13 @@ export default ({ children }) => <Post meta={meta}>{children}</Post>;
 Table of Contents
 =================
 
-   * [Why BigO Notations?](#why-big-o-notations)
+   * [History](#history)
+   * [Why BigO Notations?](#why-big-o-notations?-why-not-with-time?)
    * [Points To Remember](#points-to-remember)
    * [Time Complexity](#time-complexity)
       1. [Constant Time O(1)](#constant-time)
       1. [Logarithmic Time O(log n)](#logarithmic-time-o(log-n))
-      1. [Linear Time O(n)](#linear-time)
+      1. [Linear Time O(n)](#linear-time-o(n))
       1. [Linear Logarithmic Time O(n log n)](#linear-logarithmic-time)
       1. [Quadratic Time O(n<sup>2</sup>)](#quadratic-time)
       1. [Cubic Time O(n<sup>3</sup>)](#cubic-time)
@@ -29,38 +30,67 @@ Table of Contents
    * [Space Complexity](#space-complexity)
       * [come](#come-soon)
 
-> Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. Big O is a member of a family of notations invented by Paul Bachmann.
+## <AnchorLink label="History" name />
+1. Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. 
+1. Big O is a member of a family of notations invented by Paul Bachmann.
+1. It represents the algorithm’s scalability and performance.
 
-## Why BigO Notations?
-Why aren't we comparing with time instead of these notations.
+## <AnchorLink label="Why Big O Notations? why not with Time?" name />
 1. Not every computer hardware is same. Due to this, efficient code takes long time to execute in old machine or in-efficient code execute quickly in high end machine. but that doesn't meant your code is efficient or in-efficient by evaluating through running time. so we need common notation for better evaluation.
 
-## Points To Remember
+## <AnchorLink label="Points To Remember" name />
 1. There are Best, Average and Worst Cases.
 1. Always solve your problem with worst case scenario which is having complex input.
 1. With Big O Notation, we call the size of the input as `n`.
 
+## <AnchorLink label="Order of Growth" name />
+|    |  Constant   |   Logarithmic  |  Linear | N Log N | Quadratic  |  Cubic |  Exponential |
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| N  | O(1) | O(log n)  |  O(n) | O(n log n) | O(n<sup>2</sup>)  |  O(n<sup>3</sup>) |  O(2<sup>n</sup>) |
+| 1 |  1 | 1 | 1 | 1 |  1 | 1 | 2 |
+| 2 |  1 | 1 | 2 | 2 |  4 | 8 | 4 |
+| 4 |  1 | 2 | 4 | 8 |  16 | 64 | 16 |
+| 8 |  1 | 3 | 8 | 24 |  64 | 512 | 256 |
+| 16 |  1 | 4 | 16 | 64 |  256 | 4,096 | 65536 |
+| 32 |  1 | 5 | 32 | 160 |  1,024 | 32,768 | 4,294,967,296 |
+| 64 |  1 | 6 | 64 | 384 |  4,069 | 262,144 | 1.84 X 10<sup>19</sup> |
+| 1024 |  1 | 10 | 1,024 | 10,240 |  1,048,576 | 1,073,741,824 | still curious? |
+- - -
+
 ## <AnchorLink label="Time Complexity" name />
-Time Complexity is computational complexity that describes the amount of computer time it takes to run an algorithm.
+Time Complexity is computational complexity that describes the amount of time required to perform the computation.
 
 ### 1. Constant Time O(1)
+This takes constant / same time regardless of the number of inputs. always execute in same amount of time, doesn't matter about input size.
 
+Example 1.1: function return whether number is odd or even.
 <CodeBlock>{`
-function sum(a, b) {
-  return a + b;
+function isEvenOrOdd(n) {
+  return n % 2 ? 'Odd' : 'Even';
+}
+`}</CodeBlock>
+
+
+Example 1.2: Look-up table - function return exist key's value.
+<CodeBlock>{`
+const greetTable = { en: 'Hi', fr: '', ta: 'வணக்கம்' }
+function greet(locale = 'en') {
+  return greetTable[locale];
 }
 `}</CodeBlock>
 
 ### 2. <AnchorLink label="Logarithmic Time O(log n)" name />
-Most efficient sorts are an example of this, such as merge sort. ​It is O(log n) and search such as Binary Search.
+1. Most efficient sorts are an example of this, such as merge sort. ​It is O(log n) and search such as Binary Search.
+1. When a complex problem is solved by transforming it into a smaller pieces by some constant fraction is Logarithmic.
+1. This take space proportional to the log of the input size.
 
 <CodeBlock>{`
-function sum(a, b) {
+function isEvenOrOdd(a, b) {
   return a + b;
 }
 `}</CodeBlock>
 
-### 3. Linear Time O(n)
+### 3. <AnchorLink label="Linear Time O(n)" name />
 Simple multiply table if i pass `multiply(2)`
 <CodeBlock>{`
 function multiply(no) {
@@ -69,3 +99,10 @@ function multiply(no) {
   }
 }
 `}</CodeBlock>
+
+## <AnchorLink label="Space Complexity" name />
+Space complexity is the amount of memory consumed by the Algorithm for Variables, Program Instruction and Execution.
+Speed will rely on the computing power of the machine on which it’s executed.
+
+
+> In algorithmics, space and time are like two separate poles. Increasing speed will most often lead to increased memory consumption and vice-versa. for example: merge sort, which is extremely fast but requires a lot of memory and bubble sort, a slow algorithm but one that occupies minimal space.
