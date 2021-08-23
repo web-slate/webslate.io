@@ -1,6 +1,7 @@
 import Post from '../../../common/components/Blog/Post'
 import CodeBlock from '../../../common/components/Blog/CodeBlock'
 import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import BigO from '../../../common/components/Blog/BigO'
 
 export const meta = {
   title: 'Fibonacci Series',
@@ -29,6 +30,10 @@ Table of Contents
       * [Fibonacci Retracement](#fibonacci-retracement)
 
 > The Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones.
+
+<CodeBlock>{`
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+`.trim()}</CodeBlock>
 
 ## <a name="history">History</a>
 1. <ExternalLink url="https://en.wikipedia.org/wiki/Fibonacci">Leonardo Bonacci</ExternalLink>, Italian Mathemetician from the Republic of Pisa studied with Muslim schoolmaster who introduced him to the Hindu-Arabic system of Enumeration along with computation. later he investigated various arithmetic sytems in Egypt, France, Greece, Rome and Syria.
@@ -70,6 +75,7 @@ Finding the great common divisor of F5 = 5 and F6 = 8 is 1. This is due to the f
 1. and there is five more properties until 9.
 
 ## <a name="solutions">Solutions</a>
+Let's take a problem to find a N-th value of the Fibonacci sequence? 
 There is various kinds of approaches in order to get this sequence and there is many solutions available. lets see each of them with solutions written in javascript. 
 Before, lets look at the formulae.
 
@@ -80,8 +86,10 @@ Before, lets look at the formulae.
 Basically, this approach call itself creating more and more branches of the tree until it hits the base case.
 Below is the recursive solution in Javascript.
 
-**Time Complexity:** O(2<sup>n</sup>) (exponential time). <br />
-**Space Complexity:** O(n) considering function call stack size, otherwise O(1).
+<BigO type="time" value="2n" />
+<BigO type="space" value="n">
+  &nbsp;(considering function call stack size, otherwise O(1) Constant.)
+</BigO>
 
 <CodeBlock>{`
 function fib_1(n) {
