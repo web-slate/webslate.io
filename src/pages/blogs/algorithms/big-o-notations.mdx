@@ -30,9 +30,10 @@ Table of Contents
    * [Space Complexity](#space-complexity)
       * [come](#come-soon)
 
+> Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. 
+
 ## <AnchorLink label="History" name />
-1. Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. 
-1. Big O is a member of a family of notations invented by Paul Bachmann.
+1. Big O is a member of a family of notations invented by <ExternalLink url="https://en.wikipedia.org/wiki/Paul_Gustav_Heinrich_Bachmann">Paul Bachmann</ExternalLink> son of Johann Friedrich Bachmann (1799-1876) and a Lutheran minister (teachings of Jesus Christ and was founded by <ExternalLink url="https://en.wikipedia.org/wiki/Martin_Luther">Martin Luther</ExternalLink>),
 1. It represents the algorithm’s scalability and performance.
 
 ## <AnchorLink label="Why Big O Notations? why not with Time?" name />
@@ -58,7 +59,11 @@ Table of Contents
 - - -
 
 ## <AnchorLink label="Time Complexity" name />
-Time Complexity is computational complexity that describes the amount of time required to perform the computation.
+- Time Complexity is computational complexity that describes the amount of time required to perform the computation. 
+- Its helps to estimate the running time of a program. 
+- Performing an accurate calculation on program's operation time is labour-intensive process because its depends on the hardware spec like compiler, processor speed.
+- Its important note about Dominant operations are always considered those operation performed largest number of times depends on specific input data.
+
 
 ### 1. Constant Time O(1)
 This takes constant / same time regardless of the number of inputs. always execute in same amount of time, doesn't matter about input size.
@@ -79,14 +84,27 @@ function greet(locale = 'en') {
 }
 `}</CodeBlock>
 
+Example 1.2: Find Square of number.
+<CodeBlock>{`
+function square(no) {
+  return no * no
+}
+`}</CodeBlock>
+
 ### 2. <AnchorLink label="Logarithmic Time O(log n)" name />
 1. Most efficient sorts are an example of this, such as merge sort. ​It is O(log n) and search such as Binary Search.
 1. When a complex problem is solved by transforming it into a smaller pieces by some constant fraction is Logarithmic.
 1. This take space proportional to the log of the input size.
 
+Example 2.1: function return logarithmic.  value of n is halved on each iteration of the loop.
 <CodeBlock>{`
-function isEvenOrOdd(a, b) {
-  return a + b;
+function logarithmic(n) {
+  let result = 0
+  while(n>1) {
+    n = n / 2;
+    result = result + 1
+  }
+  return result
 }
 `}</CodeBlock>
 
@@ -101,8 +119,10 @@ function multiply(no) {
 `}</CodeBlock>
 
 ## <AnchorLink label="Space Complexity" name />
-Space complexity is the amount of memory consumed by the Algorithm for Variables, Program Instruction and Execution.
-Speed will rely on the computing power of the machine on which it’s executed.
-
+- Space complexity is the amount of memory required to perform the computation by Algorithm
+- Algorithm / Program consider Variables, Program Instruction and Execution, contents of the stack if its recursion.
+- Speed will rely on the computing power of the machine on which it’s executed.
+- Memory limits are crucial and this will share info on expected space complexity.
+- When there is constant numbers of variables, which means you have constant space complexity.
 
 > In algorithmics, space and time are like two separate poles. Increasing speed will most often lead to increased memory consumption and vice-versa. for example: merge sort, which is extremely fast but requires a lot of memory and bubble sort, a slow algorithm but one that occupies minimal space.
