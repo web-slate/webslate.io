@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "next lint",
     "start": "next dev",
+    "dev": "next dev",
     "create:cname": "echo 'webslate.io' >> ../docs/CNAME",
     "create:nojekyll": "echo '' >> ../docs/.nojekyll",
     "build": "next build && next export -o ../docs && npm run create:cname && npm run create:nojekyll"
