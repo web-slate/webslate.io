@@ -1,0 +1,70 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+
+export const meta = {
+  title: 'Missing element in Permutation.',
+  description: 'Find the missing element in a given permutation.',
+  date: 'Jul 21, 2020',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+An array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.  
+
+Your goal is to find that missing element.
+
+Write a function:  
+<CodeBlock>{`
+function solution(A) {
+}
+`}</CodeBlock>
+
+that, given an array A, returns the value of the missing element.  
+
+For example, given array A such that:
+
+- A[0] = 2
+- A[1] = 3
+- A[2] = 1
+- A[3] = 5
+
+the function should return 4, as it is the missing element.  
+
+Write an efficient algorithm for the following assumptions:  
+
+- N is an integer within the range [0..100,000];
+- the elements of A are all distinct;
+- each element of array A is an integer within the range [1..(N + 1)].
+
+## <AnchorLink label="Points to be Taken" name />
+
+1.1
+<CodeBlock>{`
+function solution(A) {
+    const b = A.sort()
+    for(let i=0;i<=b.length;i++) {
+        if(b[i+1] !== b[i] + 1) {
+            return b[i] + 1
+        }
+    }
+    return ''
+}
+`}</CodeBlock>
+
+
+1.2
+<CodeBlock>{`
+function solution(A) {
+    const n = A.length + 1
+    const sumOfN = Math.floor(n * (n + 1) / 2)
+    const sumOfAll = A.reduce((a, b) => a + b, 0)
+    return sumOfN - sumOfAll
+}
+`}</CodeBlock>
+
+## <AnchorLink label="Points to be Taken" name />
+1. Array problem expect empty array condition check and single element check.
+1. <ExternalLink url="https://en.wikipedia.org/wiki/Arithmetic_progression">Arithmetic progression</ExternalLink> 
