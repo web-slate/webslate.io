@@ -1,0 +1,65 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+
+export const meta = {
+  title: 'Tape Equilibrium',
+  description: 'Palindrome is in reverse also same',
+  date: 'Jul 21, 2020',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Table of Contents
+=================
+
+   * [History](#history)
+
+PALINDROMES means PALIN (Back again) and DROMES (Running)
+
+## <AnchorLink label="History" name />
+1. Palindrome comes from ancient greek
+1. <ExternalLink url="https://en.wikipedia.org/wiki/Sator_Square">Sator Square</ExternalLink> is one of the famous piece which is two dimensional
+
+
+Below is the basic coding solution written in javascript.
+
+<CodeBlock>{`
+function isPalindrome(S) {
+  let iteration = Math.round(S.length / 2);
+  let backward = S.length;
+  for (let forward = 0; forward < iteration; forward++) {
+    backward--;
+    if (S[forward].toLowerCase() !== S[backward].toLowerCase()) {
+      return "NO";
+    }
+  }
+  return "YES";
+}
+`}</CodeBlock>
+
+## Some Words
+
+1. Detartrated (Longest incidental palindrome)
+1. WOW
+1. KAYAK
+1. Symmys - (Annual awards)
+1. RADAR
+1. EVIL OLIVE
+1. TACO CAT
+1. HUH
+1. DO GEESE SEE GOD
+1. BORE ME ROB
+1. RISE SIR
+1. MADAM
+1. DIVE VID
+1. Tattarrattat (Sound of knocking at the door used by <ExternalLink url="https://en.wikipedia.org/wiki/James_Joyce">James Joyce</ExternalLink> in <ExternalLink url="https://en.wikipedia.org/wiki/Ulysses_(novel)">Ulysses</ExternalLink>, modernist novel)
+
+## Some Phrases
+
+1. Top spot
+1. Able was i ere I Saw Elba
+1. A man, A Plan, A Canal: Panama
+
