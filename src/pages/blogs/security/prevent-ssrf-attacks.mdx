@@ -1,0 +1,23 @@
+import Post from '../../../common/components/Blog/Post'
+
+export const meta = {
+  title: 'Preventing SSRF Attacks',
+  description: 'Tricks to preventing SSRF Attacks',
+  date: 'Jul 21, 2020',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+## SSRF
+SSRF stands for Server-Side Request Forgery. Its one type of exploit to server where hacker attempts to gather user information by various way in functionality which is not recommended.
+
+## Types
+There are mainly two types.
+1. Basic SSRF - Server accept the attacker request and respond.
+1. Blind SSRF - Server
+
+# Subjects
+We have two subjects.
+1. Attacker / Hacker - Their motives can be money, info or get paid service for free.
+1. Vulnerable App - App accepts invalid URLs or params.
