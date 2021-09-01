@@ -1,0 +1,12 @@
+import Post from '../../../common/components/Blog/Post'
+
+export const meta = {
+  title: 'Deep Linking',
+  description: 'Understand deep links in 5 minutes',
+  date: 'Jul 21, 2020',
+  readTime: 2 
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Coming soon
