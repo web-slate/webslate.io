@@ -29,14 +29,22 @@ export const MenuLinks = [
     label: 'Problems',
     url: getBlogHubPage('problems'),
   },
-  {
-    label: 'Data Structures',
-    url: getBlogHubPage('data-structures'),
-  },
-  {
-    label: 'Algorithms',
-    url: getBlogHubPage('algorithms'),
-  },
+  // {
+  //   label: 'Data Structures',
+  //   url: getBlogHubPage('data-structures'),
+  // },
+  // {
+  //   label: 'Algorithms',
+  //   url: getBlogHubPage('algorithms'),
+  // },
+  // {
+  //   label: 'Security',
+  //   url: getBlogHubPage('security'),
+  // },
+  // {
+  //   label: 'Performance',
+  //   url: getBlogHubPage('performance'),
+  // },
   {
     label: 'About',
     url: '/about'
