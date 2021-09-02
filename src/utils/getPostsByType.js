@@ -33,3 +33,10 @@ export const dataStructurePosts = importAll(
   require.context('../pages/blogs/data-structures', true, /\.mdx$/)
 );
 
+export const securityPosts = importAll(
+  require.context('../pages/blogs/security', true, /\.mdx$/)
+);
+
+export const performancePosts = importAll(
+  require.context('../pages/blogs/performance', true, /\.mdx$/)
+);
