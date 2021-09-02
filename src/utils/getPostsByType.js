@@ -40,3 +40,7 @@ export const securityPosts = importAll(
 export const performancePosts = importAll(
   require.context('../pages/blogs/performance', true, /\.mdx$/)
 );
+
+export const mobilePosts = importAll(
+  require.context('../pages/blogs/mobile', true, /\.mdx$/)
+);
