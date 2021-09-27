@@ -1,0 +1,172 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+import BigO from '../../../common/components/Blog/BigO'
+
+export const meta = {
+  title: 'Reverse to Make Equal',
+  description: 'Given two arrays A and B of length N, determine if there is a way to make A equal to B by reversing any subarrays from array B any number of times.',
+  date: 'Feb 7, 2020',
+  readTime: 10
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+
+## Straight to the Point !
+Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
+
+const bestSolution = `
+<CodeBlock>{`
+function areTheyEqual(array_a, array_b) {
+const data = {};
+for (let targetArrayIndex = 0; targetArrayIndex < array_a.length; ++targetArrayIndex) {
+  data[array_a[targetArrayIndex]] = data[array_a[targetArrayIndex]] + 1 || 1
+}
+// Iterating Array B.
+for (let arrayIndex = 0; arrayIndex < array_b.length; ++arrayIndex) {
+  const arrayBValueInDataHashMap = data[array_b[arrayIndex]];
+  if (!arrayBValueInDataHashMap) return false;
+  if (!!arrayBValueInDataHashMap) {
+    if (arrayBValueInDataHashMap < 1) {
+      return false;
+    }
+    data[array_b[arrayIndex]] = data[array_b[arrayIndex]] - 1
+  }
+}
+return true
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+> On High level note, It worth to read in detail for a better understanding.  
+This is one of the Facebook interview question and Leet code problem as well - <ExternalLink url="https://leetcode.com/problems/make-two-arrays-equal-by-reversing-sub-arrays/">1460. Make Two Arrays Equal by Reversing Sub-arrays</ExternalLink>
+
+Table of Contents
+=================
+
+   * [Problem Statement](#problem-statement)
+      * [Constraints](#constraints)
+      * [Expected](#expected)
+      * [Foot Note](#foot-note)
+      * [Solution Intro](#properties)
+   * [Solutions](#solutions)
+      * [Brute Force](#brute-force)
+      * [Sort and Stringify both Array](#sort-and-stringify-both-array)
+      * [Use HashMap with Two for...loop](#use-hashmap-with-two-for...loop)
+      * [Time Optimized](#time-optimized)
+      * [Space Optimized](#space-optimized)
+
+> Given two arrays A and B of length N, determine if there is a way to make A equal to B by reversing any subarrays from array B any number of times.
+
+<CodeBlock>{`
+bool areTheyEqual(int[] arr_a, int[] arr_b)
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Problem Statement" name />
+A = [1, 2, 3, 4]
+B = [1, 4, 3, 2]
+output = true
+
+## <AnchorLink label="Constraints" name />
+All integers in array are in the range [0, 1,000,000,000].  
+As per, Leet Code
+1. target.length == arr.length
+1. 1 <= target.length <= 1000
+1. 1 <= target[i] <= 1000
+1. 1 <= arr[i] <= 1000
+
+## <AnchorLink label="Expected" name />
+Return true if B can be made equal to A, return false otherwise.
+
+## <AnchorLink label="Foot Note" name />
+1. Each element of target should have a corresponding element in arr, and if it doesn't have a corresponding element, return false.
+1. To solve it easiely you can sort the two arrays and check if they are equal.
+
+
+## <AnchorLink label="Solution Intro" name />
+Lets see the list of approaches and their complexities.
+
+- - -
+|    | Approach |  Time Complexity |  Space Complexity |
+|----------|:-------------:|------:|------:|
+| 1 |  Brute Force (Use HashMap with Two for...loop) | O(n+m | O(m+n) |
+| 2 |  Sort and Stringify both Array | O(2n+2m) | O(n+m) |
+| 3 |  Use HashMap with Two for...loop  | O(2n+m) | O(n+m) |
+| 4 |  Time Optimized (2nd Solution) | O(2n+2m) | O(n+m) |
+| 5 |  Memory Optimized (3rd Solution) | O(2n+m) | O(n+m) |
+
+- - -
+
+## <AnchorLink label="Solutions" name />
+With no further due, lets take a example of code solutions.
+
+### <AnchorLink label="Brute Force" name />
+Below solution sort both array then iterate the first array to check each index value is same, method returns false if there is no match with same index in both array.
+
+<CodeBlock>{`
+function(target, arr) {
+  if (target.length === 0 || arr.length === 0) return false;
+  if (target.length !== arr.length) return false;
+  const sortedTarget = target.sort((a,b) => a -b);
+  const sortedArray = arr.sort((a,b) => a -b);
+  // Iterate Target Elements.
+  for(let index = 0;index<sortedTarget.length;index++) {
+      if(sortedTarget[index] !== sortedArray[index]) {
+          return false;
+      }
+  }
+  return true;
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="Sort and Stringify both Array" name />
+Using JS predefined method sort and join, basically this Sort and Stringify both array elements.
+
+<CodeBlock>{`
+function(target, arr) {
+    return target.sort().join("") === arr.sort().join("");
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="Use HashMap with Two for...loop" name />
+Basically, this stores the elements value in hashmap as property name and value as number of occurence and then iterate the second array to check the hashmap is exist with greater than zero and then decrement the hashmap property value when occurence if exist in second array.
+
+<CodeBlock>{`
+function(target, arr) {
+const data = {};
+for (let targetArrayIndex = 0; targetArrayIndex < array_a.length; ++targetArrayIndex) {
+  data[array_a[targetArrayIndex]] = data[array_a[targetArrayIndex]] + 1 || 1
+}
+// Iterating Array B.
+for (let arrayIndex = 0; arrayIndex < array_b.length; ++arrayIndex) {
+  const arrayBValueInDataHashMap = data[array_b[arrayIndex]];
+  if (!arrayBValueInDataHashMap) return false;
+  if (!!arrayBValueInDataHashMap) {
+    if (arrayBValueInDataHashMap < 1) {
+      return false;
+    }
+    data[array_b[arrayIndex]] = data[array_b[arrayIndex]] - 1
+  }
+}
+return true
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="Time Optimized" name />
+Time Optimized is Sort and Stringify both Array which is second solution.
+
+### <AnchorLink label="Space Optimized" name />
+Space Optimized is Brute Force Code solution.
