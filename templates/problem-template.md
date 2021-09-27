@@ -36,8 +36,8 @@ Table of Contents
       * [Brute Force](#brute-force)
       * [$Approach-1$](#$Approach-1$)
       * [$Approach-2$](#$Approach-2$)
-      * [$Time-Optimized$](#$Time-Optimized$)
-      * [$Space-Optimized$](#$Space-Optimized$)
+      * [Time Optimized](#time-optimized)
+      * [Space Optimized](#space-optimized)
    * [Other Possible Questions](#other-questions)
       * [$Question-1$](#$Question-1$)
       * [$Question-2$](#$Question-2$)
@@ -87,12 +87,18 @@ Description
 Code goes here...
 `.trim()}</CodeBlock>
 
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
 ### <AnchorLink label="$Approach-1$" name />
 Description
 
 <CodeBlock>{`
 Code goes here...
 `.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
 
 ### <AnchorLink label="$Approach-2$" name />
 Description
@@ -101,6 +107,9 @@ Description
 Code goes here...
 `.trim()}</CodeBlock>
 
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
 ### <AnchorLink label="$Time-Optimized$" name />
 Description
 
@@ -108,6 +117,8 @@ Description
 Code goes here...
 `.trim()}</CodeBlock>
 
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
 ### <AnchorLink label="$Space-Optimized$" name />
 Description
 
@@ -115,4 +126,6 @@ Description
 Code goes here...
 `.trim()}</CodeBlock>
 
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
 
