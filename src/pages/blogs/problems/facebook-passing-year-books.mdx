@@ -1,0 +1,170 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+import BigO from '../../../common/components/Blog/BigO'
+
+export const meta = {
+  title: 'Passing Yearbooks',
+  description: 'There are n students, numbered from 1 to n, each with their own yearbook. They would like to pass their yearbooks around and get them signed by other students.',
+  date: 'Mar 16, 2020',
+  readTime: 10
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+
+## Straight to the Point !
+Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
+
+<CodeBlock>{`
+function findSignatureCounts(arr) {
+  const ans = Array(arr.length).fill(1);
+  // Iterate Array.
+  for (let i = 0; i < arr.length; i++) {
+    let k = i;
+    while (arr[k] !== i + 1) {
+      ans[i]++;
+      k = arr[k] - 1;
+    }
+  }
+  return ans;
+}
+`.trim()}</CodeBlock>
+
+> On High level note, It worth to read in detail for a better understanding.
+
+
+Table of Contents
+=================
+
+   * [Problem Statement](#problem-statement)
+      * [Constraints](#constraints)
+      * [Expected](#expected)
+      * [Test Cases](#test-cases)
+      * [Foot Note](#foot-note)
+      * [Solution Intro](#solution-intro)
+   * [Solutions](#solutions)
+      * [Brute Force](#brute-force)
+      * [$Approach-1$](#$Approach-1$)
+      * [$Approach-2$](#$Approach-2$)
+      * [Time Optimized](#time-optimized)
+      * [Space Optimized](#space-optimized)
+   * [Other Possible Questions](#other-questions)
+      * [$Question-1$](#$Question-1$)
+      * [$Question-2$](#$Question-2$)
+      * [$Question-3$](#$Question-3$)
+      * [$Question-4$](#$Question-4$)
+
+## <AnchorLink label="Problem Statement" name />
+There are n students, numbered from 1 to n, each with their own yearbook. They would like to pass their yearbooks around and get them signed by other students.  
+
+You're given a list of n integers arr[1..n], which is guaranteed to be a permutation of 1..n (in other words, it includes the integers from 1 to n exactly once each, in some order). The meaning of this list is described below.  
+
+Initially, each student is holding their own yearbook. The students will then repeat the following two steps each minute: Each student i will first sign the yearbook that they're currently holding (which may either belong to themselves or to another student), and then they'll pass it to student arr[i-1]. It's possible that arr[i-1] = i for any given i, in which case student i will pass their yearbook back to themselves. Once a student has received their own yearbook back, they will hold on to it and no longer participate in the passing process.  
+
+It's guaranteed that, for any possible valid input, each student will eventually receive their own yearbook back and will never end up holding more than one yearbook at a time.  
+
+You must compute a list of n integers output, whose element at i-1 is equal to the number of signatures that will be present in student i's yearbook once they receive it back.  
+
+<CodeBlock>{`
+int[] findSignatureCounts(int[] arr)
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Constraints" name />
+1. n is in the range [1, 100,000].
+1. Each value arr[i] is in the range [1, n], and all values in arr[i] are distinct.
+
+## <AnchorLink label="Expected" name />
+1. Return a list of n integers output, as described above.
+
+## <AnchorLink label="Test Cases" name />
+1. n = 2, arr = [2, 1] and output = [2, 2]
+2. n = 2, arr = [1, 2] and output = [1, 1]
+
+## <AnchorLink label="Foot Note" name />
+- Test Case 1 Explaination:
+  - Pass 1:
+    - Student 1 signs their own yearbook. Then they pass the book to the student at arr[0], which is Student 2.
+    - Student 2 signs their own yearbook. Then they pass the book to the student at arr[1], which is Student 1.
+  - Pass 2:
+    - Student 1 signs Student 2's yearbook. Then they pass it to the student at arr[0], which is Student 2.
+    - Student 2 signs Student 1's yearbook. Then they pass it to the student at arr[1], which is Student 1.
+  - Pass 3:
+    - Both students now hold their own yearbook, so the process is complete.
+  - **Result**: Each student received 2 signatures.
+
+- Test Case 2 Explaination:
+  - Pass 1:
+    - Student 1 signs their own yearbook. Then they pass the book to the student at arr[0], which is themself, Student 1.
+    - Student 2 signs their own yearbook. Then they pass the book to the student at arr[1], which is themself, Student 2.
+  - Pass 2:
+    - Both students now hold their own yearbook, so the process is complete.
+  - **Result:** Each student received 1 signature.  
+
+## <AnchorLink label="Solution Intro" name />
+Lets see the list of approaches and their complexities.
+
+- - -
+|    | Approach |  Time Complexity |  Space Complexity |
+|----------|:-------------:|------:|------:|
+| 1 |  Brute Force | O(n+m) | O(m+n) |
+| 2 |  $Approach 1$ | O(n) | O(n) |
+| 3 |  $Approach 2$ | O(n) | O(n) |
+| 4 | Time Optimized | O(n) | O(n) |
+| 5 | Memory Optimized | O(n) | O(n) |
+
+- - -
+
+## <AnchorLink label="Solutions" name />
+With no further due, lets take a example of code solutions.
+
+### <AnchorLink label="Brute Force" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Approach-1$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Approach-2$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Time-Optimized$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+### <AnchorLink label="$Space-Optimized$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
