@@ -1,0 +1,95 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+import BigO from '../../../common/components/Blog/BigO'
+
+export const meta = {
+  title: '$DataStructure$',
+  description: '$DataStructureDesc$',
+  date: 'Mar 16, 2020',
+  readTime: 10
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Table of Contents
+=================
+
+   * [What is $DataStructure$](#what-is-$DataStructure$)
+      * [Constraints](#constraints)
+      * [Methods](#methods)
+      * [Implementation](#implementation)
+      * [Complexity Table](#complexity-table)
+      * [When do we use $DataStructure$](#when-do-we-use-$DataStructure$)
+   * [Real Time Problems](#real-time-problems)
+      * [$Problem-1$](#$Problem-1$)
+   * [Other Possible Questions](#other-possible-questions)
+      * [$Question-1$](#$Question-1$)
+
+## <AnchorLink label="What is $DataStructure$" name />
+$DataStructureDesc$
+
+<CodeBlock>{`
+int[] findSignatureCounts(int[] arr)
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Constraints" name />
+1. Constraints one
+1. Constraints two
+
+## <AnchorLink label="Methods" name />
+Below is the complexity table for $DataStructure$.
+
+- - -
+|    | Method |  Use |
+|----------|:-------------:|------:|
+| 1 |  isEmpty() | Return true when Stack is empty |
+| 2 |  push() | To add item to last |
+| 3 |  pop() | To remove item which is last |
+| 4 |  peek() | Return the last item |
+| 4 |  size() | Return the Stack size |
+- - -
+
+## <AnchorLink label="Implementation" name />
+Below is the simple example in JavaScript.
+
+<CodeBlock>{`
+int[] findSignatureCounts(int[] arr)
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Complexity Table" name />
+Below is the complexity table for $DataStructure$.
+
+- - -
+|    | Operation |  Best |  Average |  Worst |
+|----------|:-------------:|------:|------:|------:|
+| 1 |  Access |  | O(n) | O(n) |
+| 2 |  Search |  | O(n) | O(n) |
+| 3 |  Insertion |  | O(n) | O(n) |
+| 4 |  Deletion |  | O(n) | O(n) |
+| 5 |  Space Complexity |  |  | O(n) |
+- - -
+
+## <AnchorLink label="When do we use $DataStructure$" name />
+We can use it for this problems.
+
+## <AnchorLink label="Real Time Problems" name />
+We can use it for this problems.
+
+### <AnchorLink label="$Problem-1$" name />
+Below is the problem and its solution.
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Other Possible Questions" name />
+We can use it for this problems.
+
+### <AnchorLink label="$Question-1$" name />
+Below is the Question and its solution.
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
