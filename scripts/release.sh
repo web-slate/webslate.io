@@ -11,10 +11,13 @@ PACKAGE_VERSION=$(cat package.json \
 echo 'Build Webslate App'
 npm run build
 
-echo "Add to Git and Commit for Release version: $PACKAGE_VERSION"
-cd .. && git add . && git commit -m "Release $PACKAGE_VERSION"
+echo "Add to Git and Commit for Release version: v.$PACKAGE_VERSION"
+cd .. && git add . && git commit -m "Release v.$PACKAGE_VERSION"
 
-# echo "Create Tag v.$PACKAGE_VERSION"
+echo "Push to master..."
+git push origin master
+
+echo "Create Tag v.$PACKAGE_VERSION"
 git tag v.$PACKAGE_VERSION
 
 git push origin --tags
