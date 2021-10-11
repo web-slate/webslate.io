@@ -30,7 +30,6 @@ Table of Contents
 ## <AnchorLink label="What is Stack" name />
 1. Stack is a linear data structure to store a one-dimensional list.
 1. Store items in Last-in, First-Out or First-In, Last-Out(FILO).
-1. 
 
 <CodeBlock>{`
 int[] findSignatureCounts(int[] arr)
@@ -57,7 +56,35 @@ Below is the complexity table for Stack.
 Below is the simple example in JavaScript.
 
 <CodeBlock>{`
-int[] findSignatureCounts(int[] arr)
+function Stack() {
+  let count = 0;
+  const storage = {};
+  const push = (value) => {
+    storage[count] = value;
+    count++;
+  }
+  const pop = () => {
+    if(count === 0) {
+      return undefined;
+    }
+    count--;
+    const lastValue = storage[count];
+    delete storage[count]
+    return lastValue;
+  }
+  const size = () => {
+    return count;
+  }
+  const peek = () => {
+    return storage[count-1]
+  }
+  return {
+    push,
+    pop,
+    size,
+    peek
+  }
+}
 `.trim()}</CodeBlock>
 
 ## <AnchorLink label="Complexity Table" name />
