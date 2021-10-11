@@ -14,8 +14,8 @@ npm run build
 echo "Add to Git and Commit for Release version: v.$PACKAGE_VERSION"
 cd .. && git add . && git commit -m "Release v.$PACKAGE_VERSION"
 
-echo "Push to master..."
-git push origin master
+echo "Push to main branch..."
+git push origin main
 
 echo "Create Tag v.$PACKAGE_VERSION"
 git tag v.$PACKAGE_VERSION

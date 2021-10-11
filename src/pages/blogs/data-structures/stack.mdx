@@ -59,25 +59,31 @@ Below is the simple example in JavaScript.
 function Stack() {
   let count = 0;
   const storage = {};
+
   const push = (value) => {
     storage[count] = value;
     count++;
   }
+
   const pop = () => {
     if(count === 0) {
       return undefined;
     }
+
     count--;
     const lastValue = storage[count];
     delete storage[count]
     return lastValue;
   }
+
   const size = () => {
     return count;
   }
+
   const peek = () => {
     return storage[count-1]
   }
+
   return {
     push,
     pop,
