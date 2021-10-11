@@ -1,5 +1,5 @@
 echo 'Move to source directoy and do minor Release.'
-# cd src && npm version $1
+cd src && npm version $1
 
 PACKAGE_VERSION=$(cat package.json \
   | grep version \
@@ -9,12 +9,10 @@ PACKAGE_VERSION=$(cat package.json \
   | tr -d '[[:space:]]')
 
 echo 'Build Webslate App'
-# npm run build
+npm run build
 
 echo "Add to Git and Commit for Release version: $PACKAGE_VERSION"
-# cd .. && git add . && git commit -m "Release $PACKAGE_VERSION"
-
-cd ..
+cd .. && git add . && git commit -m "Release $PACKAGE_VERSION"
 
 # echo "Create Tag v.$PACKAGE_VERSION"
 git tag v.$PACKAGE_VERSION
