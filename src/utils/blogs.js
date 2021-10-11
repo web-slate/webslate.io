@@ -25,10 +25,10 @@ export const MenuLinks = [
     label: 'Programming',
     url: getBlogHubPage('programming'),
   },
-  {
-    label: 'Problems',
-    url: getBlogHubPage('problems'),
-  },
+  // {
+  //   label: 'Problems',
+  //   url: getBlogHubPage('problems'),
+  // },
   // {
   //   label: 'Data Structures',
   //   url: getBlogHubPage('data-structures'),
