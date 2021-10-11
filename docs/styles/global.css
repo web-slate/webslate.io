@@ -34,3 +34,7 @@ table thead tr th {
 table thead tr th, table tbody tr td {
   padding: 5px 10px;
 }
+
+.token-line:not(:last-child) {
+  min-height: 1rem;
+}
