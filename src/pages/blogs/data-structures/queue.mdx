@@ -1,0 +1,130 @@
+import Post from '../../../common/components/Blog/Post'
+import CodeBlock from '../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../common/components/Link/AnchorLink'
+import BigO from '../../../common/components/Blog/BigO'
+
+export const meta = {
+  title: 'Queue',
+  description: 'Queue, a FIFO(First In, First Out) data structure',
+  date: 'Mar 16, 2020',
+  readTime: 10
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+Table of Contents
+=================
+
+   * [What is Queue](#what-is-queue)
+      * [Constraints](#constraints)
+      * [Methods](#methods)
+      * [Implementation](#implementation)
+      * [Complexity Table](#complexity-table)
+      * [When do we use Queue](#when-do-we-use-queue)
+   * [Real Time Problems](#real-time-problems)
+      * [$Problem-1$](#$problem-1$)
+   * [Other Possible Questions](#other-possible-questions)
+      * [$Question-1$](#$question-1$)
+
+## <AnchorLink label="What is Queue" name />
+1. Queue data structure follows FIFO(First In, First Out) principle.
+1. A Queue is a container where only the front and back elements can be accessed or operated upon.
+1. Elements can be added only from back (rear) and Elements can be removed only from front.
+1. Enqueue in back (tail) and Dequeue in Front (head).
+
+<CodeBlock>{`
+int[] findSignatureCounts(int[] arr)
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Constraints" name />
+1. Constraints one
+1. Constraints two
+
+## <AnchorLink label="Methods" name />
+Below is the complexity table for Queue.
+
+- - -
+|    | Method |  Use |
+|----------|:-------------:|------:|
+| 1 |  Enqueue() | Add element to the last position |
+| 2 |  Dequeue() | Remove element from first position |
+| 3 |  front() | Return the first element |
+| 4 |  back() | Return the last item |
+| 4 |  size() | Return the Stack size |
+- - -
+
+## <AnchorLink label="Implementation" name />
+Below is the simple queue implementation in JavaScript.
+
+<CodeBlock>{`
+function queue () {
+  const items = [];
+  const enqueue = (value) => {
+    items.push(value);
+  }
+  const dequeue = () => {
+    items.shift(); // removes first element
+  }
+  const front = () => {
+    return items[0];
+  }
+  const back = () => {
+    return items[items.length - 1];
+  }
+  const size = () => {
+    return items.length;
+  }
+  const isEmpty = () => {
+    return (items.length === 0)
+  }
+  const print = () => {
+    return console.log(items)
+  }
+  return {
+    enqueue,
+    dequeue,
+    front,
+    back,
+    size,
+    isEmpty,
+    print,
+  }
+}
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Complexity Table" name />
+Below is the complexity table for Queue.
+
+- - -
+|    | Operation |  Best |  Average |  Worst |
+|----------|:-------------:|------:|------:|------:|
+| 1 |  Access |  | O(n) | O(n) |
+| 2 |  Search |  | O(n) | O(n) |
+| 3 |  Insertion |  | O(1) | O(1) |
+| 4 |  Deletion |  | O(1) | O(1) |
+| 5 |  Space Complexity |  | O(n) | O(1) |
+- - -
+
+## <AnchorLink label="When do we use Queue" name />
+We can use it for this problems.
+
+## <AnchorLink label="Real Time Problems" name />
+We can use it for this problems.
+
+### <AnchorLink label="$Problem-1$" name />
+Below is the problem and its solution.
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+## <AnchorLink label="Other Possible Questions" name />
+We can use it for this problems.
+
+### <AnchorLink label="$Question-1$" name />
+Below is the Question and its solution.
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
