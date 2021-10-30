@@ -92,7 +92,7 @@ Lets see the list of approaches and their complexities.
 - - -
 |    | Approach |  Time Complexity |  Space Complexity |
 |----------|:-------------:|------:|------:|
-| 1 |  Brute Force (Use HashMap with Two for...loop) | O(n+m | O(m+n) |
+| 1 |  Brute Force (Use HashMap with Two for...loop) | O(n+m) | O(m+n) |
 | 2 |  Sort and Stringify both Array | O(2n+2m) | O(n+m) |
 | 3 |  Use HashMap with Two for...loop  | O(2n+m) | O(n+m) |
 | 4 |  Time Optimized (2nd Solution) | O(2n+2m) | O(n+m) |
@@ -108,7 +108,6 @@ Below solution sort both array then iterate the first array to check each index 
 
 <CodeBlock>{`
 function(target, arr) {
-  if (target.length === 0 || arr.length === 0) return false;
   if (target.length !== arr.length) return false;
   const sortedTarget = target.sort((a,b) => a -b);
   const sortedArray = arr.sort((a,b) => a -b);

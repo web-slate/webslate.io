@@ -44,7 +44,7 @@ const BigOValues = {
 }
 
 const BigO = ({ type = 'time', value, children }) => {
-  const { notation, value: oValue } = BigOValues[value] || {}
+  const { notation, value: oValue = value } = BigOValues[value] || {}
   if (!notation) {
     return null;
   }
@@ -52,7 +52,7 @@ const BigO = ({ type = 'time', value, children }) => {
   return (
     <>
       <strong>{(type === 'time') ? 'Time  Complexity' : 'Space Complexity'}: </strong>
-      O({oValue}) - {notation}
+      O({oValue}) {notation ? `- ${notation}` : ''}
       {children}
       <br />
     </>

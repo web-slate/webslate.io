@@ -9,7 +9,11 @@
     "dev": "next dev",
     "create:cname": "echo 'webslate.io' >> ../docs/CNAME",
     "create:nojekyll": "echo '' >> ../docs/.nojekyll",
-    "build": "next build && next export -o ../docs && npm run create:cname && npm run create:nojekyll"
+    "build": "next build && next export -o ../docs && npm run create:cname && npm run create:nojekyll",
+    "publish": "npm run build && npm run publish:minor",
+    "publish:minor": "sh ../scripts/release.sh minor",
+    "publish:major": "sh ../scripts/release.sh major",
+    "publish:patch": "sh ../scripts/release.sh patch"
   },
   "keywords": [],
   "author": "",
