@@ -24,3 +24,4 @@ export const PostItem = ({ type, post }) => {
     </article>
   );
 };
+

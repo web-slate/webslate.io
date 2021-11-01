@@ -21,8 +21,18 @@ export const programmingPosts = importAll(
   require.context('../pages/blogs/programming', true, /\.mdx$/)
 );
 
+// Coding Problem
 export const problemsPosts = importAll(
   require.context('../pages/blogs/problems', true, /\.mdx$/)
+);
+
+export const problemsArrayPosts = importAll(
+  require.context('../pages/blogs/problems/arrays', true, /\.mdx$/)
+);
+
+// Facebook Coding Problem for Array
+export const facebookProblemsArrayPosts = importAll(
+  require.context('../pages/blogs/problems/arrays/facebook', true, /\.mdx$/)
 );
 
 export const algorithmPosts = importAll(
@@ -44,3 +54,4 @@ export const performancePosts = importAll(
 export const mobilePosts = importAll(
   require.context('../pages/blogs/mobile', true, /\.mdx$/)
 );
+

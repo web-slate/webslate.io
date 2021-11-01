@@ -1,8 +1,8 @@
-import Post from '../../../common/components/Blog/Post'
-import CodeBlock from '../../../common/components/Blog/CodeBlock'
-import ExternalLink from '../../../common/components/Blog/ExternalLink'
-import AnchorLink from '../../../common/components/Link/AnchorLink'
-import BigO from '../../../common/components/Blog/BigO'
+import Post from '../../../../../common/components/Blog/Post'
+import CodeBlock from '../../../../../common/components/Blog/CodeBlock'
+import ExternalLink from '../../../../../common/components/Blog/ExternalLink'
+import AnchorLink from '../../../../../common/components/Link/AnchorLink'
+import BigO from '../../../../../common/components/Blog/BigO'
 
 export const meta = {
   title: 'Reverse to Make Equal',
@@ -19,23 +19,23 @@ Are you landed to this page and rushing for the immediate solution in javascript
 
 <CodeBlock>{`
 function areTheyEqual(array_a, array_b) {
-const data = {};
-for (let targetArrayIndex = 0; targetArrayIndex < array_a.length; ++targetArrayIndex) {
-  data[array_a[targetArrayIndex]] = data[array_a[targetArrayIndex]] + 1 || 1
-}
-// Iterating Array B.
-for (let arrayIndex = 0; arrayIndex < array_b.length; ++arrayIndex) {
-  const arrayBValueInDataHashMap = data[array_b[arrayIndex]];
-  if (!arrayBValueInDataHashMap) return false;
-  if (!!arrayBValueInDataHashMap) {
-    if (arrayBValueInDataHashMap < 1) {
-      return false;
-    }
-    data[array_b[arrayIndex]] = data[array_b[arrayIndex]] - 1
+  const data = {};
+  for (let targetArrayIndex = 0; targetArrayIndex < array_a.length; ++targetArrayIndex) {
+    data[array_a[targetArrayIndex]] = data[array_a[targetArrayIndex]] + 1 || 1
   }
+  // Iterating Array B.
+  for (let arrayIndex = 0; arrayIndex < array_b.length; ++arrayIndex) {
+    const arrayBValueInDataHashMap = data[array_b[arrayIndex]];
+    if (!arrayBValueInDataHashMap) return false;
+    if (!!arrayBValueInDataHashMap) {
+      if (arrayBValueInDataHashMap < 1) {
+        return false;
+      }
+      data[array_b[arrayIndex]] = data[array_b[arrayIndex]] - 1
+    }
+  }
+  return true;
 }
-return true
-};
 `.trim()}</CodeBlock>
 
 <BigO type="time" value="n+m" />
@@ -50,8 +50,9 @@ Table of Contents
    * [Problem Statement](#problem-statement)
       * [Constraints](#constraints)
       * [Expected](#expected)
+      * [Test Cases](#test-cases)
       * [Foot Note](#foot-note)
-      * [Solution Intro](#properties)
+      * [Solution Intro](#solution-intro)
    * [Solutions](#solutions)
       * [Brute Force](#brute-force)
       * [Sort and Stringify both Array](#sort-and-stringify-both-array)
@@ -59,41 +60,43 @@ Table of Contents
       * [Time Optimized](#time-optimized)
       * [Space Optimized](#space-optimized)
 
+## <AnchorLink label="Problem Statement" name />
 > Given two arrays A and B of length N, determine if there is a way to make A equal to B by reversing any subarrays from array B any number of times.
 
 <CodeBlock>{`
 bool areTheyEqual(int[] arr_a, int[] arr_b)
 `.trim()}</CodeBlock>
 
-## <AnchorLink label="Problem Statement" name />
-A = [1, 2, 3, 4]
-B = [1, 4, 3, 2]
-output = true
+### <AnchorLink label="Constraints" name />
+All integers in array are in the range [0, 1,000,000,000]. 
 
-## <AnchorLink label="Constraints" name />
-All integers in array are in the range [0, 1,000,000,000].  
 As per, Leet Code
 1. target.length == arr.length
 1. 1 <= target.length <= 1000
 1. 1 <= target[i] <= 1000
 1. 1 <= arr[i] <= 1000
 
-## <AnchorLink label="Expected" name />
+### <AnchorLink label="Expected" name />
 Return true if B can be made equal to A, return false otherwise.
 
-## <AnchorLink label="Foot Note" name />
+### <AnchorLink label="Test Cases" name />
+1. Input: [1, 2, 3, 4] and [1, 4, 3, 2] and Output: true
+1. Input: [1, 2, 3, 4] and [1, 4, 3, 3] and Output: false
+1. (Leet Code) Input: [392,360] and [392,360] and Output: true, because leet code problem check index as well.
+
+### <AnchorLink label="Foot Note" name />
 1. Each element of target should have a corresponding element in arr, and if it doesn't have a corresponding element, return false.
 1. To solve it easiely you can sort the two arrays and check if they are equal.
+1. Leet code based expect both array to be sorted as a hint
 
-
-## <AnchorLink label="Solution Intro" name />
+### <AnchorLink label="Solution Intro" name />
 Lets see the list of approaches and their complexities.
 
 - - -
 |    | Approach |  Time Complexity |  Space Complexity |
 |----------|:-------------:|------:|------:|
-| 1 |  Brute Force (Use HashMap with Two for...loop) | O(n+m) | O(m+n) |
-| 2 |  Sort and Stringify both Array | O(2n+2m) | O(n+m) |
+| 1 |  Brute Force (Sort Array B and Iterate Array B then check both Index) | O(n+m) | O(m) |
+| 2 |  Sort B and Stringify both Array | O(2n+2m) | O(n+m) |
 | 3 |  Use HashMap with Two for...loop  | O(2n+m) | O(n+m) |
 | 4 |  Time Optimized (2nd Solution) | O(2n+2m) | O(n+m) |
 | 5 |  Memory Optimized (3rd Solution) | O(2n+m) | O(n+m) |
@@ -107,13 +110,13 @@ With no further due, lets take a example of code solutions.
 Below solution sort both array then iterate the first array to check each index value is same, method returns false if there is no match with same index in both array.
 
 <CodeBlock>{`
-function(target, arr) {
-  if (target.length !== arr.length) return false;
-  const sortedTarget = target.sort((a,b) => a -b);
-  const sortedArray = arr.sort((a,b) => a -b);
+function areTheyEqual(array_a, array_b) {
+  if (array_a.length !== array_b.length) return false;
+  // Sorting array_b in ascending.
+  const sortedArray = array_b.sort((a,b) => a - b);
   // Iterate Target Elements.
-  for(let index = 0;index<sortedTarget.length;index++) {
-      if(sortedTarget[index] !== sortedArray[index]) {
+  for(let arrayAIndex = 0;arrayAIndex<array_a.length;arrayAIndex++) {
+      if(array_a[arrayAIndex] !== sortedArray[arrayAIndex]) {
           return false;
       }
   }
@@ -140,24 +143,24 @@ function(target, arr) {
 Basically, this stores the elements value in hashmap as property name and value as number of occurence and then iterate the second array to check the hashmap is exist with greater than zero and then decrement the hashmap property value when occurence if exist in second array.
 
 <CodeBlock>{`
-function(target, arr) {
-const data = {};
-for (let targetArrayIndex = 0; targetArrayIndex < array_a.length; ++targetArrayIndex) {
-  data[array_a[targetArrayIndex]] = data[array_a[targetArrayIndex]] + 1 || 1
-}
-// Iterating Array B.
-for (let arrayIndex = 0; arrayIndex < array_b.length; ++arrayIndex) {
-  const arrayBValueInDataHashMap = data[array_b[arrayIndex]];
-  if (!arrayBValueInDataHashMap) return false;
-  if (!!arrayBValueInDataHashMap) {
-    if (arrayBValueInDataHashMap < 1) {
-      return false;
-    }
-    data[array_b[arrayIndex]] = data[array_b[arrayIndex]] - 1
+function areTheyEqual(array_a, array_b) {
+  const data = {};
+  for (let targetArrayIndex = 0; targetArrayIndex < array_a.length; ++targetArrayIndex) {
+    data[array_a[targetArrayIndex]] = data[array_a[targetArrayIndex]] + 1 || 1
   }
+  // Iterating Array B.
+  for (let arrayIndex = 0; arrayIndex < array_b.length; ++arrayIndex) {
+    const arrayBValueInDataHashMap = data[array_b[arrayIndex]];
+    if (!arrayBValueInDataHashMap) return false;
+    if (!!arrayBValueInDataHashMap) {
+      if (arrayBValueInDataHashMap < 1) {
+        return false;
+      }
+      data[array_b[arrayIndex]] = data[array_b[arrayIndex]] - 1
+    }
+  }
+  return true;
 }
-return true
-};
 `.trim()}</CodeBlock>
 
 <BigO type="time" value="n+m" />
