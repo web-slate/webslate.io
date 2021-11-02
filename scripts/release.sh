@@ -1,5 +1,5 @@
 echo 'Move to source directoy and do minor Release.'
-cd src && npm version $1
+npm version $1
 
 PACKAGE_VERSION=$(cat package.json \
   | grep version \

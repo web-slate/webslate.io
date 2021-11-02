@@ -1,0 +1,171 @@
+import Post from '@/common/components/Blog/Post'
+import CodeBlock from '@/common/components/Blog/CodeBlock'
+import ExternalLink from '@/common/components/Blog/ExternalLink'
+import AnchorLink from '@/common/components/Link/AnchorLink'
+import BigO from '@/common/components/Blog/BigO'
+
+export const meta = {
+  title: 'Contiguous Subarrays',
+  description: 'You are given an array arr of N integers. For each index i, you are required to determine the number of contiguous subarrays that fulfill the following conditions:',
+  date: 'Feb 7, 2020',
+  readTime: 10
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+
+## Straight to the Point !
+Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
+1. Step 1: goes_here
+1. Step 2: goes_here
+1. Step 3: goes_here
+
+<CodeBlock>{`
+function countSubarrays(arr) {
+  const fillCS = (arr, LCS = Array(arr.length).fill(1)) => {
+    const stack = [];
+    for(let i=0; i<arr.length; i++) {
+      while(stack.length && arr[stack[stack.length - 1]] < arr[i]) {
+        LCS[i] += LCS[stack.pop()];
+      }
+      stack.push(i);
+    }
+    return LCS;
+  }
+  // Assign Left and Right.
+  const left = fillCS(arr);
+  const right = fillCS(arr.reverse()).reverse();
+  // Result as array length.
+  const result = Array(arr.length);
+  for(let i=0; i<arr.length; i++) {
+    result[i] = left[i] + right[i] - 1;
+  }
+  return result;
+}
+`.trim()}</CodeBlock>
+
+> On High level note, It worth to read in detail for a better understanding.  
+> This is one of the Facebook interview question and Refer to Similar Leet code problem as well - <ExternalLink url="https://leetcode.com/problems/contiguous-array/">525. Contiguous Array</ExternalLink>
+
+Table of Contents
+=================
+
+   * [Problem Statement](#problem-statement)
+    * [Constraints](#constraints)
+    * [Expected](#expected)
+    * [Test Cases](#test-cases)
+    * [Foot Note](#foot-note)
+    * [Solution Intro](#solution-intro)
+   * [Solutions](#solutions)
+      * [Brute Force](#brute-force)
+      * [$Approach-1$](#$Approach-1$)
+      * [$Approach-2$](#$Approach-2$)
+      * [Time Optimized](#time-optimized)
+      * [Space Optimized](#space-optimized)
+   * [Other Possible Questions](#other-questions)
+      * [$Question-1$](#$Question-1$)
+      * [$Question-2$](#$Question-2$)
+      * [$Question-3$](#$Question-3$)
+      * [$Question-4$](#$Question-4$)
+
+## <AnchorLink label="Problem Statement" name />
+> You are given an array arr of N integers. For each index i, you are required to determine the number of contiguous subarrays that fulfill the following conditions:
+1. The value at index i must be the maximum element in the contiguous subarrays, and
+1. These contiguous subarrays must either start from or end on index i.
+
+<CodeBlock>{`
+int[] countSubarrays(int[] arr)
+`.trim()}</CodeBlock>
+
+### <AnchorLink label="Constraints" name />
+1. Array arr is a non-empty list of unique integers that range between 1 to 1,000,000,000
+1. Size N is between 1 and 1,000,000
+
+### <AnchorLink label="Expected" name />
+1. An array where each index i contains an integer denoting the maximum number of contiguous subarrays of arr[i]
+
+### <AnchorLink label="Test Cases" name />
+1. Input = [3, 4, 1, 6, 2] Output = [3, 4, 1, 6, 2]
+Explanation:
+1. For index 0 - [3] is the only contiguous subarray that starts (or ends) with 3, and the maximum value in this subarray is 3.
+1. For index 1 - [4], [3, 4], [4, 1]
+1. For index 2 - [1]
+1. For index 3 - [6], [6, 2], [1, 6], [4, 1, 6], [3, 4, 1, 6]
+1. For index 4 - [2]
+So, the answer for the above input is [1, 3, 1, 5, 1]
+
+1. Input = [2, 4, 7, 1, 5, 3] Output = [1, 2, 6, 1, 3, 1]
+
+### <AnchorLink label="Foot Note" name />
+***Complexity 1***: Any solution must have time and space complexities of at least O(N) to deal with the array of N integers. A relatively simple solution considering all possible contiguous subarrays, or in fact any solution counting the valid subarrays one-by-one, would require a time complexity of at least O(N^2). However, a number of observations can allow this to be optimized down to the ideal time complexity of O(N). For example, letting L[i] be the number of valid subarrays ending at index i (useful to compute on the way to the final answer), consider how we might efficiently compute L[i] for each i from 1 to N by reusing past information rather than computing it from scratch.  
+***Complexity 2***: When analyzing such a solution, note that even if we’re computing N values L[1..N], and computing any single one of those values might take on the order of N steps, the overall time complexity will not necessarily be O(N^2) - we should instead consider how many steps may occur in total across all N of them in the worst case.
+
+### <AnchorLink label="Solution Intro" name />
+Lets see the list of approaches and their complexities.
+1. Approach 1: Letting L[i] be the number of valid subarrays ending at index i and R[i] be the number of valid subarrays beginning at index i, we’ll have output[i] = L[i] + R[i] - 1. Computing R[1..N] is equivalent to computing L[1..N] if a were reversed, allowing us to reduce the problem to computing L[1..N] for an array of N distinct integers.
+1. Approach 2: We can next observe that the index of the latest element to the left of the ith element which is larger than it determines which subarrays ending at index i are valid - specifically, the ones beginning to the right of that larger element. Letting G[i] be equal to the largest index j such that j < i and a[j] > a[i] (or equal to 0 if there’s no such j), then L[i] = i - G[i]. We’ve now reduced the problem to computing these values G[1..N] for an array of N distinct integers.
+1. Approach 3: Computing G[i] for each i from 1 to N is a promising approach, but we’ll still need to consider how to do so as efficiently as possible. We can observe that it’s not possible to compute G[i] purely based on the values of G[i-1], a[i-1], and a[i]; we may need more information about earlier a values as well, but would like to avoid simply scanning over all of them. Out of earlier indices j (such that j < i), we can consider which indices are worth considering as potential candidates for G[i] - for example, if there exists a pair of indices j and k such that j < k and a[j] < a[k], can index j ever be a candidate for G[i] for any i > k? If we can maintain information about the set of these possible candidate indices as we go through the array, it’s possible to efficiently determine the one that’s actually equal to G[i] for each i.
+
+- - -
+|    | Approach |  Time Complexity |  Space Complexity |
+|----------|:-------------:|------:|------:|
+| 1 |  Brute Force | O(n+m | O(m+n) |
+| 2 |  $Approach 1$ | O(n) | O(n) |
+| 3 |  $Approach 2$ | O(n) | O(n) |
+| 4 | Time Optimized | O(n) | O(n) |
+| 5 | Memory Optimized | O(n) | O(n) |
+
+- - -
+
+## <AnchorLink label="Solutions" name />
+With no further due, lets take a example of code solutions.
+
+### <AnchorLink label="Brute Force" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Approach-1$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Approach-2$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Time-Optimized$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+### <AnchorLink label="$Space-Optimized$" name />
+Description
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+

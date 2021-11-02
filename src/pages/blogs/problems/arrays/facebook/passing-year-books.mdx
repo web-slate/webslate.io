@@ -1,8 +1,8 @@
-import Post from '../../../common/components/Blog/Post'
-import CodeBlock from '../../../common/components/Blog/CodeBlock'
-import ExternalLink from '../../../common/components/Blog/ExternalLink'
-import AnchorLink from '../../../common/components/Link/AnchorLink'
-import BigO from '../../../common/components/Blog/BigO'
+import Post from '@/common/components/Blog/Post'
+import CodeBlock from '@/common/components/Blog/CodeBlock'
+import ExternalLink from '@/common/components/Blog/ExternalLink'
+import AnchorLink from '@/common/components/Link/AnchorLink'
+import BigO from '@/common/components/Blog/BigO'
 
 export const meta = {
   title: 'Passing Yearbooks',
@@ -13,22 +13,25 @@ export const meta = {
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
-
 ## Straight to the Point !
 Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
+1. Step 1: Create new array with same value from given array length.
+2. Step 2: Iterate given book array.
+
 
 <CodeBlock>{`
 function findSignatureCounts(arr) {
-  const ans = Array(arr.length).fill(1);
-  // Iterate Array.
-  for (let i = 0; i < arr.length; i++) {
-    let k = i;
-    while (arr[k] !== i + 1) {
-      ans[i]++;
-      k = arr[k] - 1;
+  // Write your code here
+  const result = Array(arr.length).fill(1);
+  for(let i=0; i<arr.length; i++) {
+    let holding = arr[i] - 1;
+    const myself = i;
+    while(holding !== myself) {
+      holding = arr[holding] - 1;
+      result[i]++;
     }
   }
-  return ans;
+  return result;
 }
 `.trim()}</CodeBlock>
 
