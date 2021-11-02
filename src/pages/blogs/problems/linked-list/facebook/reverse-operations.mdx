@@ -5,22 +5,55 @@ import AnchorLink from '@/common/components/Link/AnchorLink'
 import BigO from '@/common/components/Blog/BigO'
 
 export const meta = {
-  title: '$Title$',
-  description: '$desc$',
+  title: 'Reverse Operations',
+  description: 'You are given a singly-linked list that contains N integers. A subpart of the list is a contiguous set of even elements, bordered either by either end of the list or an odd element. For example, if the list is [1, 2, 8, 9, 12, 16], the subparts of the list are [2, 8] and [12, 16].',
   date: 'Feb 7, 2020',
   readTime: 10
 }
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
-
 ## Straight to the Point !
 Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
 1. Step 1: goes_here
 1. Step 2: goes_here
 1. Step 3: goes_here
+
 <CodeBlock>{`
-Code Solution Goes here.
+function reverse(head) {
+// write your code here
+  let dummy = new Node(0);
+  dummy.next = head;
+  // Declare previous and current value.
+  let previous = dummy;
+  let current = head;
+  // While Loop.
+  while (current) {
+    if (isEven(current.data)) {
+      previous.next = reverseNodes(current);
+    }
+    previous = current;
+    current = current.next;
+  }
+  return dummy.next;
+  // Reverse Nodes.
+  function reverseNodes(node) {
+    let current = node;
+    let previous = null;
+    while (current && isEven(current.data)) {
+      let next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    node.next = current;
+    return previous;
+  }
+  // Check number isEven.
+  function isEven(num) {
+    return num % 2 === 0;
+  }
+}
 `.trim()}</CodeBlock>
 
 > On High level note, It worth to read in detail for a better understanding.
@@ -48,23 +81,32 @@ Table of Contents
       * [$Question-4$](#$Question-4$)
 
 ## <AnchorLink label="Problem Statement" name />
-> $desc$
+> You are given a singly-linked list that contains N integers. A subpart of the list is a contiguous set of even elements, bordered either by either end of the list or an odd element. For example, if the list is [1, 2, 8, 9, 12, 16], the subparts of the list are [2, 8] and [12, 16].
 
+Then, for each subpart, the order of the elements is reversed. In the example, this would result in the new list, [1, 8, 2, 9, 16, 12].
+
+The goal of this question is: given a resulting list, determine the original order of the elements.
+
+Implementation detail:  
+
+You must use the following definition for elements in the linked list:  
 <CodeBlock>{`
-0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+class Node {
+    int data;
+    Node next;
+}
 `.trim()}</CodeBlock>
 
 ### <AnchorLink label="Constraints" name />
-1. Goes here
+1. 1 <= N <= 1000, where N is the size of the list
+1. 1 <= Li <= 10^9, where Li is the ith element of the list
 
 ### <AnchorLink label="Expected" name />
 1. Goes here
 
 ### <AnchorLink label="Test Cases" name />
-1. Test Cases Goes here
-1. Test Cases Goes here
-1. Test Cases Goes here
-1. Test Cases Goes here
+1. Input: [1, 2, 8, 9, 12, 16] and Output: [1, 8, 2, 9, 16, 12]
+1. Input: [2, 18, 24, 3, 5, 7, 9, 6, 12] and Output: [24, 18, 2, 3, 5, 7, 9, 12, 6]
 
 ### <AnchorLink label="Foot Note" name />
 1. Goes here
