@@ -1,9 +1,9 @@
 // Components.
-import { PostItem } from "../../../../../common/components/Blog/PostItem";
-import Header from "../../../../../common/components/Blog/Header";
+import { PostItem } from "@/common/components/Blog/PostItem";
+import Header from "@/common/components/Blog/Header";
 
 // Utils.
-import { facebookProblemsArrayPosts } from "../../../../../utils/getPostsByType";
+import { facebookProblemsArrayPosts } from "@/utils/getPostsByType";
 
 export default function FacebookArrayProblemPage() {
   return (

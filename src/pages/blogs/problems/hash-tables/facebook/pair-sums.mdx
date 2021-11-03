@@ -5,14 +5,13 @@ import AnchorLink from '@/common/components/Link/AnchorLink'
 import BigO from '@/common/components/Blog/BigO'
 
 export const meta = {
-  title: '$Title$',
-  description: '$desc$',
+  title: 'Pair Sums',
+  description: 'Given a list of n integers arr[0..(n-1)], determine the number of different pairs of elements within it which sum to k.',
   date: 'Feb 7, 2020',
   readTime: 10
 }
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
-
 
 ## Straight to the Point !
 Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
@@ -49,26 +48,29 @@ Table of Contents
       * [$Question-4$](#$Question-4$)
 
 ## <AnchorLink label="Problem Statement" name />
-> $desc$
+> Given a list of n integers arr[0..(n-1)], determine the number of different pairs of elements within it which sum to k.
+
+If an integer appears in the list multiple times, each copy is considered to be different; that is, two pairs are considered different if one pair includes at least one array index which the other doesn't, even if they include the same values.
+
 
 <CodeBlock>{`
-0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+int numberOfWays(int[] arr, int k)
 `.trim()}</CodeBlock>
 
 ### <AnchorLink label="Constraints" name />
-1. Goes here
+1. n is in the range [1, 100,000].
+1. Each value arr[i] is in the range [1, 1,000,000,000].
+1. k is in the range [1, 1,000,000,000].
 
 ### <AnchorLink label="Expected" name />
-1. Goes here
+1. Return the number of different pairs of elements which sum to k.
 
 ### <AnchorLink label="Test Cases" name />
-1. Test Cases Goes here
-1. Test Cases Goes here
-1. Test Cases Goes here
-1. Test Cases Goes here
+1. n = 5, k = 6 and arr = [1, 2, 3, 4, 3], so output = 2
+1. n = 5, k = 6 and arr = [1, 5, 3, 3, 3], so output = 4
 
 ### <AnchorLink label="Foot Note" name />
-1. Goes here
+1. There's one valid pair 1+5, and three different valid pairs 3+3 (the 3rd and 4th elements, 3rd and 5th elements, and 4th and 5th elements).
 
 ### <AnchorLink label="Solution Intro" name />
 Lets see the list of approaches and their complexities.
