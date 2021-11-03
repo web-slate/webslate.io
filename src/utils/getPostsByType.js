@@ -30,6 +30,11 @@ export const problemsArrayPosts = importAll(
   require.context('../pages/blogs/problems/arrays', true, /\.mdx$/)
 );
 
+// Facebook Coding Problem for Queue.
+export const facebookProblemsQueuePosts = importAll(
+  require.context('../pages/blogs/problems/queues/facebook', true, /\.mdx$/)
+);
+
 // Facebook Coding Problem for Array
 export const facebookProblemsArrayPosts = importAll(
   require.context('../pages/blogs/problems/arrays/facebook', true, /\.mdx$/)
