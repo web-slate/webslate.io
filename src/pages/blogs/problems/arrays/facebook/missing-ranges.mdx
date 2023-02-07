@@ -138,7 +138,7 @@ var findMissingRanges = function(nums, lower, upper) {
     const result = [];
     let previous = lower - 1;
 
-    var formatMissingNumbers = function (lower, upper) {
+    function formatMissingNumbers(lower, upper) {
       if (lower === upper) {
         return `${lower}`;
       }
