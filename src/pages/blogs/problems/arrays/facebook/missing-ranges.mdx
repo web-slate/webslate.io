@@ -137,11 +137,9 @@ Step 7: Else, format the number like `${lower} -> ${upper}`
 function formatMissingNumbers(lower, upper) {
   if (lower === upper) {
     return lower.toString()
-    // return `${lower}`; // its better
   }
 
   return lower.toString() + upper.toString()
-  // return `${lower}->${upper}`; // its better
 }
 
 var findMissingRanges = function(nums, lower, upper) {
