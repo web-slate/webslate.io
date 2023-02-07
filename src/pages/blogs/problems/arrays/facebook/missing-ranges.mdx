@@ -136,10 +136,12 @@ Step 7: Else, format the number like `${lower} -> ${upper}`
 <CodeBlock>{`
 function formatMissingNumbers(lower, upper) {
   if (lower === upper) {
-    return \`${lower}\`;
+    return lower.toString()
+    // return `${lower}`; // its better
   }
 
-  return \`${lower}->${upper}\`;
+  return lower.toString() + upper.toString()
+  // return `${lower}->${upper}`; // its better
 }
 
 var findMissingRanges = function(nums, lower, upper) {
