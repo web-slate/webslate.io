@@ -5,7 +5,7 @@ import AnchorLink from '@/common/components/Link/AnchorLink'
 import BigO from '@/common/components/Blog/BigO'
 
 export const meta = {
-  title: 'Add Strings - Draft',
+  title: 'Add Strings',
   description: 'Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.',
   date: 'Feb 7, 2023',
   readTime: 10
@@ -86,9 +86,9 @@ Lets see the list of approaches and their complexities.
 - - -
 |    | Approach |  Time Complexity |  Space Complexity |
 |----------|:-------------:|------:|------:|
-| 1 |  Brute Force | O(n+m) | O(m+n) |
-| 2 |  Approach 1 - Elementary Math | O(n) | O(n) |
-| 3 |  $Approach 2$ | O(n) | O(n) |
+| 1 |  Brute Force | O(n) | O(n) |
+| 2 |  Approach 1 - Using Big Int | O(n) | O(n) |
+| 3 |  Approach 2 - Elementary Math | O(max(N1​,N2​)) | O(max(N1​,N2​)) |
 | 4 | Time Optimized | O(n) | O(n) |
 | 5 | Memory Optimized | O(n) | O(n) |
 
@@ -111,7 +111,24 @@ var addStrings = function(num1, num2) {
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
 
-### <AnchorLink label="Approach 1 - Elementary Math" name />
+### <AnchorLink label="Approach 1 - Use BigInt" name />
+Step 1: Convert the parameter to Big Integer.
+Step 2: Pass it String and return the value
+
+<CodeBlock>{`
+var addStrings = function(num1, num2) {
+    const result = BigInt(num1) + BigInt(num2);
+
+    return String(result);
+    // return result.toString() // OR
+    // return `${a+b}` // OR
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Approach-2$" name />
 Step 1: Initialize `result` as empty string and `carry` as zero.
 Step 2: Store both numbers length to additional variable as `num1Length`, `num2Length`.
 Step 3: Run while until any length variable is greater than or equal to zero.
@@ -150,21 +167,11 @@ function addStrings(num1, num2) {
 }
 `.trim()}</CodeBlock>
 
-<BigO type="time" value="n+m" />
-<BigO type="space" value="n+m" />
-
-### <AnchorLink label="$Approach-2$" name />
-Description
-
-<CodeBlock>{`
-Code goes here...
-`.trim()}</CodeBlock>
-
-<BigO type="time" value="n+m" />
-<BigO type="space" value="n+m" />
+<BigO type="time" value="max(N1​,N2​)" />
+<BigO type="space" value="max(N1​,N2​)" />
 
 ### <AnchorLink label="$Time-Optimized$" name />
-Description
+Coming Soon...
 
 <CodeBlock>{`
 Code goes here...
@@ -173,7 +180,7 @@ Code goes here...
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
 ### <AnchorLink label="$Space-Optimized$" name />
-Description
+Coming Soon...
 
 <CodeBlock>{`
 Code goes here...
