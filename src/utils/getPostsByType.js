@@ -40,6 +40,11 @@ export const facebookProblemsArrayPosts = importAll(
   require.context('../pages/blogs/problems/arrays/facebook', true, /\.mdx$/)
 );
 
+// Facebook Coding Problem for String
+export const facebookProblemsStringPosts = importAll(
+  require.context('../pages/blogs/problems/strings/facebook', true, /\.mdx$/)
+);
+
 // Facebook Coding Problem for Linked List.
 export const facebookProblemsLinkedListPosts = importAll(
   require.context('../pages/blogs/problems/linked-list/facebook', true, /\.mdx$/)
@@ -53,6 +58,10 @@ export const facebookProblemsHashTablesPosts = importAll(
 
 export const algorithmPosts = importAll(
   require.context('../pages/blogs/algorithms', true, /\.mdx$/)
+);
+
+export const facebookSortingAlgorithmPosts = importAll(
+  require.context('../pages/blogs/algorithms/sorting/facebook', true, /\.mdx$/)
 );
 
 export const dataStructurePosts = importAll(
