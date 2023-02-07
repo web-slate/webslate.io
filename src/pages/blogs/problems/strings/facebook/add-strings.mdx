@@ -152,7 +152,7 @@ function addStrings(num1, num2) {
       let x2 = num2Length >= 0 ? num2[num2Length] - '0' : 0;
       let value = (x1 + x2 + carry) % 10;
       carry = ((x1 + x2 + carry) / 10) | 0;
-      result = `${value}${result}`
+      result = ${value}${result}
       num1Length--;
       num2Length--;
     }
