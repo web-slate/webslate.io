@@ -120,7 +120,7 @@ var addStrings = function(num1, num2) {
     const result = BigInt(num1) + BigInt(num2);
     return String(result);
     // return result.toString() // OR
-    // return ${a+b} // OR
+    // return \`$\{a+b\}\` // OR
 };
 `.trim()}</CodeBlock>
 
@@ -144,23 +144,24 @@ Step 11: return computed string.
 function addStrings(num1, num2) {
     let result = '';
     let carry = 0;
+  
     let num1Length = num1.length - 1;
     let num2Length = num2.length - 1;
-    // while loop
+  
     while (num1Length >= 0 || num2Length >= 0) {
       let x1 = num1Length >= 0 ? num1[num1Length] - '0' : 0;
       let x2 = num2Length >= 0 ? num2[num2Length] - '0' : 0;
       let value = (x1 + x2 + carry) % 10;
       carry = ((x1 + x2 + carry) / 10) | 0;
-      result = ${value}${result}
+      result = \`$\{value\}$\{result\}\`
       num1Length--;
       num2Length--;
     }
-    // carry condition
+  
     if (carry != 0) {
-      result = &#96;${carry}${result}&#96;
+      result = \`$\{carry\}$\{result}\`
     }
-    // result array.
+  
     return result
 }
 `.trim()}</CodeBlock>

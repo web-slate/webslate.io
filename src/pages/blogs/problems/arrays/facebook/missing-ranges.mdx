@@ -5,7 +5,7 @@ import AnchorLink from '@/common/components/Link/AnchorLink'
 import BigO from '@/common/components/Blog/BigO'
 
 export const meta = {
-  title: 'Missing Ranges',
+  title: 'Missing Ranges (Draft)',
   description: 'You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.',
   date: 'Feb 7, 2023',
   readTime: 10
@@ -16,15 +16,12 @@ export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
 ## Straight to the Point !
 Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
-1. Step 1: Parse Int the two numbers
-1. Step 2: add the two numbers using "+" operator
-1. Step 3: convert it to two string.
+1. Step 1: ....
+1. Step 2: ....
+1. Step 3: ....
 
 <CodeBlock>{`
-var addStrings = function(num1, num2) {
-    const n1 = parseInt(num1)
-    const n2 = parseInt(num2)
-    return (n1+n2).toString();
+var findMissingRanges = function(nums, lower, upper) {
 };
 `.trim()}</CodeBlock>
 
@@ -53,10 +50,10 @@ Table of Contents
       * [$Question-4$](#$Question-4$)
 
 ## <AnchorLink label="Problem Statement" name />
-> You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.
-1. A number x is considered missing if x is in the range [lower, upper] and x is not in nums.
-1. Return the smallest sorted list of ranges that cover every missing number exactly. That is, no element of nums is in any of the ranges, and each missing number is in one of the ranges.
-1. Each range [a,b] in the list should be output as:
+> You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.<br/>
+A number x is considered missing if x is in the range [lower, upper] and x is not in nums.<br/>
+Return the smallest sorted list of ranges that cover every missing number exactly. That is, no element of nums is in any of the ranges, and each missing number is in one of the ranges.<br/>
+Each range [a,b] in the list should be output as:<br/>
 1. "a->b" if a != b
 1. "a" if a == b
 
@@ -65,9 +62,10 @@ String [] findMissingRanges(number[] nums, number lower, number upper)
 `.trim()}</CodeBlock>
 
 ### <AnchorLink label="Constraints" name />
-1. 1 <= num1.length, num2.length <= 104
-1. num1 and num2 consist of only digits.
-1. num1 and num2 don't have any leading zeros except for the zero itself.
+1. -109 <= lower <= upper <= 109
+1. 0 <= nums.length <= 100
+1. lower <= nums[i] <= upper
+1. All the values of nums are unique.
 
 ### <AnchorLink label="Expected" name />
 1. Sum of Two String return in String
@@ -137,9 +135,16 @@ Step 7: Else, format the number like `${lower} -> ${upper}`
 var findMissingRanges = function(nums, lower, upper) {
     const result = [];
     let previous = lower - 1;
-    // formatMissingNumbers can be
+    function formatMissingNumbers(lower, upper) {
+      if (lower === upper) {
+        return lower.toString()
+      }
+      return lower.toString() + upper.toString()
+    }
+    // iterate the given numbers.
     for(let i=0;i<=nums.length;i++) {
       let current = (i < nums.length) ? nums[i] : upper + 1;
+      // add the missing numbers.
       if(previous + 1 <= current - 1) {
         result.push(
           formatMissingNumbers(
@@ -148,6 +153,7 @@ var findMissingRanges = function(nums, lower, upper) {
           )
         )
       }
+      // assign current value to previous
       previous = current
     }
     return result;
