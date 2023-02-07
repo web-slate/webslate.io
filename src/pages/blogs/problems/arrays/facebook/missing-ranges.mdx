@@ -118,18 +118,18 @@ var findMissingRanges = function(nums, lower, upper) {
 
 ### <AnchorLink label="Approach 1: Linear Scan" name />
 Basically, Program need to iterate the given number `nums` array and find missing series using another method `formatMissingNumbers` to update the given pattern format them `"4->49"`
-Step 1: Initialize the array variable `result`.
-Step 2: Initialize the integer variable `previous` with computing lower minus one (lower - 1).
-Step 3: Iterate the given number `nums` array.
-Step 3.1: Inside Loop, Initialize the integer variable `current` with value current indexed number `nums[i]` if its not last item else store the upper value with adding one (1).
-Step 3.2: If `lower` value which is `previous` is still lesser than or equal to `current` value then read the `previous` + 1 (lower value) and `current` - 1 (upper value) to generate those series using `formatMissingNumbers`
-Step 3.2: Create `formatMissingNumbers` function to find all the missing numbers passsing previous plus 1 (`previous` + 1) and current minus 1 (`current` - 1).
-Step 3.3: Push the Formatted value to `result` array.
-Step 3.3: Assign the `current` value to `previous` variable.
-Step 4: Return the result.
-Step 5: In `formatMissingNumbers` function, read the lower and upper value.
-Step 6: Return the lower if lower and upper are same.
-Step 7: Else, format the number like `${lower} -> ${upper}`
+Step 1: Initialize the array variable `result`.<br/>
+Step 2: Initialize the integer variable `previous` with computing lower minus one (lower - 1).<br/>
+Step 3: Iterate the given number `nums` array.<br/>
+Step 3.1: Inside Loop, Initialize the integer variable `current` with value current indexed number `nums[i]` if its not last item else store the upper value with adding one (1).<br/>
+Step 3.2: If `lower` value which is `previous` is still lesser than or equal to `current` value then read the `previous` + 1 (lower value) and `current` - 1 (upper value) to generate those series using `formatMissingNumbers`.<br/>
+Step 3.2: Create `formatMissingNumbers` function to find all the missing numbers passsing previous plus 1 (`previous` + 1) and current minus 1 (`current` - 1).<br/>
+Step 3.3: Push the Formatted value to `result` array.<br/>
+Step 3.3: Assign the `current` value to `previous` variable.<br/>
+Step 4: Return the result.<br/>
+Step 5: In `formatMissingNumbers` function, read the lower and upper value.<br/>
+Step 6: Return the lower if lower and upper are same.<br/>
+Step 7: Else, format the number like `${lower} -> ${upper}`.<br/>
 
 <CodeBlock>{`
 var findMissingRanges = function(nums, lower, upper) {
