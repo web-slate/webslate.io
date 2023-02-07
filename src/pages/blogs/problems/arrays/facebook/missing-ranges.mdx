@@ -1,0 +1,200 @@
+import Post from '@/common/components/Blog/Post'
+import CodeBlock from '@/common/components/Blog/CodeBlock'
+import ExternalLink from '@/common/components/Blog/ExternalLink'
+import AnchorLink from '@/common/components/Link/AnchorLink'
+import BigO from '@/common/components/Blog/BigO'
+
+export const meta = {
+  title: 'Missing Ranges',
+  description: 'You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.',
+  date: 'Feb 7, 2023',
+  readTime: 10
+}
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+
+
+## Straight to the Point !
+Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
+1. Step 1: Parse Int the two numbers
+1. Step 2: add the two numbers using "+" operator
+1. Step 3: convert it to two string.
+
+<CodeBlock>{`
+var addStrings = function(num1, num2) {
+    const n1 = parseInt(num1)
+    const n2 = parseInt(num2)
+    return (n1+n2).toString();
+};
+`.trim()}</CodeBlock>
+
+> On High level note, It worth to read in detail for a better understanding.  
+> This is one of the Facebook interview question and Refer to Similar Leet code problem as well - <ExternalLink url="https://leetcode.com/problems/add-strings/description/">415. Add Strings</ExternalLink>
+
+Table of Contents
+=================
+
+   * [Problem Statement](#problem-statement)
+    * [Constraints](#constraints)
+    * [Expected](#expected)
+    * [Test Cases](#test-cases)
+    * [Foot Note](#foot-note)
+    * [Solution Intro](#solution-intro)
+   * [Solutions](#solutions)
+      * [Brute Force](#brute-force)
+      * [Approach 1: Linear Scan](#approach-1-linear-scan)
+      * [$Approach-2$](#$Approach-2$)
+      * [Time Optimized](#time-optimized)
+      * [Space Optimized](#space-optimized)
+   * [Other Possible Questions](#other-questions)
+      * [$Question-1$](#$Question-1$)
+      * [$Question-2$](#$Question-2$)
+      * [$Question-3$](#$Question-3$)
+      * [$Question-4$](#$Question-4$)
+
+## <AnchorLink label="Problem Statement" name />
+> You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.
+1. A number x is considered missing if x is in the range [lower, upper] and x is not in nums.
+1. Return the smallest sorted list of ranges that cover every missing number exactly. That is, no element of nums is in any of the ranges, and each missing number is in one of the ranges.
+1. Each range [a,b] in the list should be output as:
+1. "a->b" if a != b
+1. "a" if a == b
+
+<CodeBlock>{`
+String [] findMissingRanges(number[] nums, number lower, number upper)
+`.trim()}</CodeBlock>
+
+### <AnchorLink label="Constraints" name />
+1. 1 <= num1.length, num2.length <= 104
+1. num1 and num2 consist of only digits.
+1. num1 and num2 don't have any leading zeros except for the zero itself.
+
+### <AnchorLink label="Expected" name />
+1. Sum of Two String return in String
+
+### <AnchorLink label="Test Cases" name />
+1. Input = nums = [0,1,3,50,75], lower = 0, upper = 99 Output = ["2","4->49","51->74","76->99"]
+Explanation: The ranges are:
+[2,2] --> "2"
+[4,49] --> "4->49"
+[51,74] --> "51->74"
+[76,99] --> "76->99"
+1. Input = nums = [-1], lower = -1, upper = -1 Output = []
+Explanation: There are no missing ranges since there are no missing numbers.
+
+
+### <AnchorLink label="Foot Note" name />
+***Complexity 1***: Any solution must have time and space complexities of at least O(N) to deal with the array of N integers. A relatively simple solution considering all possible contiguous subarrays, or in fact any solution counting the valid subarrays one-by-one, would require a time complexity of at least O(N^2). However, a number of observations can allow this to be optimized down to the ideal time complexity of O(N). For example, letting L[i] be the number of valid subarrays ending at index i (useful to compute on the way to the final answer), consider how we might efficiently compute L[i] for each i from 1 to N by reusing past information rather than computing it from scratch.  
+***Complexity 2***: When analyzing such a solution, note that even if we’re computing N values L[1..N], and computing any single one of those values might take on the order of N steps, the overall time complexity will not necessarily be O(N^2) - we should instead consider how many steps may occur in total across all N of them in the worst case.
+
+### <AnchorLink label="Solution Intro" name />
+Lets see the list of approaches and their complexities.
+1. Approach 1: Elementary Math
+1. Approach 2: Using type casting operators.
+1. Approach 3: Computing G[i] for each i from 1 to N is a promising approach, but we’ll still need to consider how to do so as efficiently as possible. We can observe that it’s not possible to compute G[i] purely based on the values of G[i-1], a[i-1], and a[i]; we may need more information about earlier a values as well, but would like to avoid simply scanning over all of them. Out of earlier indices j (such that j < i), we can consider which indices are worth considering as potential candidates for G[i] - for example, if there exists a pair of indices j and k such that j < k and a[j] < a[k], can index j ever be a candidate for G[i] for any i > k? If we can maintain information about the set of these possible candidate indices as we go through the array, it’s possible to efficiently determine the one that’s actually equal to G[i] for each i.
+
+- - -
+|    | Approach |  Time Complexity |  Space Complexity |
+|----------|:-------------:|------:|------:|
+| 1 |  Brute Force | O(n) | O(n) |
+| 2 |  Approach 1 - Linear Scan | O(n) | O(1) |
+| 3 |  Approach 2 - ? | O(n​) | O(n) |
+| 4 | Time Optimized | O(n) | O(n) |
+| 5 | Memory Optimized | O(n) | O(n) |
+
+- - -
+
+## <AnchorLink label="Solutions" name />
+With no further due, lets take a example of code solutions.
+
+### <AnchorLink label="Brute Force" name />
+Description
+
+<CodeBlock>{`
+var findMissingRanges = function(nums, lower, upper) {
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="Approach 1: Linear Scan" name />
+Basically, Program need to iterate the given number `nums` array and find missing series using another method `formatMissingNumbers` to update the given pattern format them `"4->49"`
+Step 1: Initialize the array variable `result`.
+Step 2: Initialize the integer variable `previous` with computing lower minus one (lower - 1).
+Step 3: Iterate the given number `nums` array.
+Step 3.1: Inside Loop, Initialize the integer variable `current` with value current indexed number `nums[i]` if its not last item else store the upper value with adding one (1).
+Step 3.2: If `lower` value which is `previous` is still lesser than or equal to `current` value then read the `previous` + 1 (lower value) and `current` - 1 (upper value) to generate those series using `formatMissingNumbers`
+Step 3.2: Create `formatMissingNumbers` function to find all the missing numbers passsing previous plus 1 (`previous` + 1) and current minus 1 (`current` - 1).
+Step 3.3: Push the Formatted value to `result` array.
+Step 3.3: Assign the `current` value to `previous` variable.
+Step 4: Return the result.
+Step 5: In `formatMissingNumbers` function, read the lower and upper value.
+Step 6: Return the lower if lower and upper are same.
+Step 7: Else, format the number like `${lower} -> ${upper}`
+
+<CodeBlock>{`
+var findMissingRanges = function(nums, lower, upper) {
+    const result = [];
+    let previous = lower - 1;
+
+    var formatMissingNumbers = function (lower, upper) {
+      if (lower === upper) {
+        return `${lower}`;
+      }
+
+      return `${lower}->${upper}`;
+    }
+
+    for(let i=0;i<=nums.length;i++) {
+      let current = (i < nums.length) ? nums[i] : upper + 1;
+
+      if(previous + 1 <= current - 1) {
+        result.push(
+          formatMissingNumbers(
+            previous + 1,
+            current - 1
+          )
+        )
+      }
+
+      previous = current
+    }
+
+    return result;
+};
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
+### <AnchorLink label="$Approach-2$" name />
+
+
+<CodeBlock>{`
+var findMissingRanges = function(nums, lower, upper) {
+}
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="max(N1​,N2​)" />
+<BigO type="space" value="max(N1​,N2​)" />
+
+### <AnchorLink label="$Time-Optimized$" name />
+Coming Soon...
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+### <AnchorLink label="$Space-Optimized$" name />
+Coming Soon...
+
+<CodeBlock>{`
+Code goes here...
+`.trim()}</CodeBlock>
+
+<BigO type="time" value="n+m" />
+<BigO type="space" value="n+m" />
+
