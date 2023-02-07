@@ -5,7 +5,7 @@ import AnchorLink from '@/common/components/Link/AnchorLink'
 import BigO from '@/common/components/Blog/BigO'
 
 export const meta = {
-  title: 'Add Strings',
+  title: 'Add Strings - Draft',
   description: 'Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.',
   date: 'Feb 7, 2023',
   readTime: 10
@@ -29,7 +29,7 @@ var addStrings = function(num1, num2) {
 `.trim()}</CodeBlock>
 
 > On High level note, It worth to read in detail for a better understanding.  
-> This is one of the Facebook interview question and Refer to Similar Leet code problem as well - <ExternalLink url="https://leetcode.com/problems/add-strings/description/">525. Contiguous Array</ExternalLink>
+> This is one of the Facebook interview question and Refer to Similar Leet code problem as well - <ExternalLink url="https://leetcode.com/problems/add-strings/description/">415. Add Strings</ExternalLink>
 
 Table of Contents
 =================
@@ -57,7 +57,7 @@ Table of Contents
 1. You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.
 
 <CodeBlock>{`
-int[] countSubarrays(int[] arr)
+String addStrings(String num1, String num2)
 `.trim()}</CodeBlock>
 
 ### <AnchorLink label="Constraints" name />
@@ -79,7 +79,7 @@ int[] countSubarrays(int[] arr)
 
 ### <AnchorLink label="Solution Intro" name />
 Lets see the list of approaches and their complexities.
-1. Approach 1: Using parseInt and toString
+1. Approach 1: Elementary Math
 1. Approach 2: Using type casting operators.
 1. Approach 3: Computing G[i] for each i from 1 to N is a promising approach, but we’ll still need to consider how to do so as efficiently as possible. We can observe that it’s not possible to compute G[i] purely based on the values of G[i-1], a[i-1], and a[i]; we may need more information about earlier a values as well, but would like to avoid simply scanning over all of them. Out of earlier indices j (such that j < i), we can consider which indices are worth considering as potential candidates for G[i] - for example, if there exists a pair of indices j and k such that j < k and a[j] < a[k], can index j ever be a candidate for G[i] for any i > k? If we can maintain information about the set of these possible candidate indices as we go through the array, it’s possible to efficiently determine the one that’s actually equal to G[i] for each i.
 
@@ -87,7 +87,7 @@ Lets see the list of approaches and their complexities.
 |    | Approach |  Time Complexity |  Space Complexity |
 |----------|:-------------:|------:|------:|
 | 1 |  Brute Force | O(n+m) | O(m+n) |
-| 2 |  $Approach 1$ | O(n) | O(n) |
+| 2 |  Approach 1 - Elementary Math | O(n) | O(n) |
 | 3 |  $Approach 2$ | O(n) | O(n) |
 | 4 | Time Optimized | O(n) | O(n) |
 | 5 | Memory Optimized | O(n) | O(n) |
@@ -111,11 +111,43 @@ var addStrings = function(num1, num2) {
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
 
-### <AnchorLink label="$Approach-1$" name />
-Description
+### <AnchorLink label="Approach 1 - Elementary Math" name />
+Step 1: Initialize `result` as empty string and `carry` as zero.
+Step 2: Store both numbers length to additional variable as `num1Length`, `num2Length`.
+Step 3: Run while until any length variable is greater than or equal to zero.
+Step 4: Compute the iterated index value to additional variable as `num1Result`, `num2Result`.
+Step 5: IF index is greater than or equal to zero store the index value subtract with `0` zero string else numeric 0 zero.
+Step 6: Initialize `value` adding `num1Result` and `num2Result` module by 10
+Step 7: Update `carry` adding `num1Result` and `num2Result` divided by 10 with 
+Step 8: Append the `value` first to `result` variable as suffix.
+Step 9: decrement the `num1Length` and `num2Length`.
+Step 10: Append the `carry` first and `result` variable as suffix to the same result only if `carry` is not equal to `0`.
+Step 11: return computed string.
 
 <CodeBlock>{`
-Code goes here...
+function addStrings(num1, num2) {
+    let result = '';
+    let carry = 0;
+  
+    let num1Length = num1.length - 1;
+    let num2Length = num2.length - 1;
+  
+    while (num1Length >= 0 || num2Length >= 0) {
+      let x1 = num1Length >= 0 ? num1[num1Length] - '0' : 0;
+      let x2 = num2Length >= 0 ? num2[num2Length] - '0' : 0;
+      let value = (x1 + x2 + carry) % 10;
+      carry = ((x1 + x2 + carry) / 10) | 0;
+      result = `${value}${result}`
+      num1Length--;
+      num2Length--;
+    }
+  
+    if (carry != 0) {
+      result = `${carry}${result}`
+    }
+  
+    return result
+}
 `.trim()}</CodeBlock>
 
 <BigO type="time" value="n+m" />
