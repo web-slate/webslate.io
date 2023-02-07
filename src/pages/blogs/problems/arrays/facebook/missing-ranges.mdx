@@ -134,17 +134,17 @@ Step 6: Return the lower if lower and upper are same.
 Step 7: Else, format the number like `${lower} -> ${upper}`
 
 <CodeBlock>{`
+function formatMissingNumbers(lower, upper) {
+  if (lower === upper) {
+    return `${lower}`;
+  }
+
+  return `${lower}->${upper}`;
+}
+
 var findMissingRanges = function(nums, lower, upper) {
     const result = [];
     let previous = lower - 1;
-
-    function formatMissingNumbers(lower, upper) {
-      if (lower === upper) {
-        return `${lower}`;
-      }
-
-      return `${lower}->${upper}`;
-    }
 
     for(let i=0;i<=nums.length;i++) {
       let current = (i < nums.length) ? nums[i] : upper + 1;
