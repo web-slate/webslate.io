@@ -42,13 +42,13 @@ Table of Contents
     * [Solution Intro](#solution-intro)
    * [Solutions](#solutions)
       * [Brute Force](#brute-force)
-      * [$Approach 1 Elementary Math$](#$Approach 1 Elementary Math$)
-      * [$Approach-2$](#$Approach-2$)
+      * [Approach 1 Using Big Int](#approach-1-using-big-int)
+      * [Approach 2 Elementary Math](#approach-1-elementary-math)
       * [Time Optimized](#time-optimized)
       * [Space Optimized](#space-optimized)
-   * [Other Possible Questions](#other-questions)
-      * [$Question-1$](#$Question-1$)
-      * [$Question-2$](#$Question-2$)
+   * [Similar Questions](#other-questions)
+      * [Integer - Sum of Two Integers](#integer---sum-of-two-integers)
+      * [Array - Add to Array Form of Integer](#array---add-to-array-form-of-integer)
       * [$Question-3$](#$Question-3$)
       * [$Question-4$](#$Question-4$)
 
@@ -111,16 +111,19 @@ var addStrings = function(num1, num2) {
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
 
-### <AnchorLink label="Approach 1 - Use BigInt" name />
-Step 1: Convert the parameter to Big Integer.<br />
-Step 2: Pass it String and return the value<br />
+### <AnchorLink label="Approach 1 Using Big Int" name="approach-1-using-big-int" />
+Step 1: Convert the both num1 and num2 parameters to Big Integers.<br />
+Step 1.1: Add both big integers and store it in `result` variable.<br />
+Step 2: Pass it to String constructor and return the value.<br />
+Step 2.1: Alternative - Convert the big integer result to string using `toString()`.<br />
+Step 2.2: Alternative - Convert to String using template literals.<br />
 
 <CodeBlock>{`
 var addStrings = function(num1, num2) {
     const result = BigInt(num1) + BigInt(num2);
     return String(result);
     // return result.toString() // OR
-    // return \`$\{a+b\}\` // OR
+    // return \`$\{result\}\` // OR
 };
 `.trim()}</CodeBlock>
 
@@ -169,7 +172,7 @@ function addStrings(num1, num2) {
 <BigO type="time" value="max(N1​,N2​)" />
 <BigO type="space" value="max(N1​,N2​)" />
 
-### <AnchorLink label="$Time-Optimized$" name />
+### <AnchorLink label="Time Optimized" name />
 Coming Soon...
 
 <CodeBlock>{`
@@ -178,7 +181,7 @@ Code goes here...
 
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
-### <AnchorLink label="$Space-Optimized$" name />
+### <AnchorLink label="Space Optimized" name />
 Coming Soon...
 
 <CodeBlock>{`
@@ -188,3 +191,52 @@ Code goes here...
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
 
+## <AnchorLink label="Similar Questions" name />
+There is few more questions by data structure type which is similar problems. checkout below questions.
+
+### <AnchorLink label="Integer - Sum of Two Integers" name />
+Given two integers a and b, return the sum of the two integers without using the operators + and -.<br />
+
+```
+Input: a = 1, b = 2
+Output: 3
+```
+
+<ExternalLink url="https://leetcode.com/problems/sum-of-two-integers/description/">
+  371. Sum of Two Integers
+</ExternalLink> for more details
+
+### <AnchorLink label="Array - Add to Array Form of Integer" name />
+The array-form of an integer num is an array representing its digits in left to right order.<br/>
+
+For example, for num = 1321, the array form is [1,3,2,1].
+
+<ExternalLink url="https://leetcode.com/problems/add-to-array-form-of-integer/">
+  989. Add to Array-Form of Integer
+</ExternalLink> for more details
+
+### <AnchorLink label="Linked List - Plus One" name />
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.<br />
+
+Increment the large integer by one and return the resulting array of digits.
+
+<ExternalLink url="https://leetcode.com/problems/plus-one/description/">
+  66. Plus One
+</ExternalLink> for more details
+
+### <AnchorLink label="Linked List - Add Two Numbers" name />
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.<br />
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself. <br />
+
+<ExternalLink url="https://leetcode.com/problems/add-two-numbers/">
+  2. Add Two Numbers
+</ExternalLink> for more details
+
+### <AnchorLink label="Linked List - Add Two Numbers II" name />
+You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list. <br />
+You may assume the two numbers do not contain any leading zero, except the number 0 itself. <br />
+
+<ExternalLink url="https://leetcode.com/problems/add-two-numbers-ii/">
+  445. Add Two Numbers II
+</ExternalLink> for more details
