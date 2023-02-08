@@ -16,9 +16,9 @@ export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
 ## Straight to the Point !
 Are you landed to this page and rushing for the immediate solution in javascript. here you go !!
-1. Step 1: Parse Int the two numbers
-1. Step 2: add the two numbers using "+" operator
-1. Step 3: convert it to two string.
+1. Step 1: Parse Int the two numbers<br />
+1. Step 2: add the two numbers using "+" operator<br />
+1. Step 3: convert it to two string.<br />
 
 <CodeBlock>{`
 var addStrings = function(num1, num2) {
@@ -42,7 +42,7 @@ Table of Contents
     * [Solution Intro](#solution-intro)
    * [Solutions](#solutions)
       * [Brute Force](#brute-force)
-      * [$Approach-1$](#$Approach-1$)
+      * [$Approach 1 Elementary Math$](#$Approach 1 Elementary Math$)
       * [$Approach-2$](#$Approach-2$)
       * [Time Optimized](#time-optimized)
       * [Space Optimized](#space-optimized)
@@ -112,8 +112,8 @@ var addStrings = function(num1, num2) {
 <BigO type="space" value="n+m" />
 
 ### <AnchorLink label="Approach 1 - Use BigInt" name />
-Step 1: Convert the parameter to Big Integer.
-Step 2: Pass it String and return the value
+Step 1: Convert the parameter to Big Integer.<br />
+Step 2: Pass it String and return the value<br />
 
 <CodeBlock>{`
 var addStrings = function(num1, num2) {
@@ -127,18 +127,18 @@ var addStrings = function(num1, num2) {
 <BigO type="time" value="n+m" />
 <BigO type="space" value="n+m" />
 
-### <AnchorLink label="$Approach-2$" name />
-Step 1: Initialize `result` as empty string and `carry` as zero.
-Step 2: Store both numbers length to additional variable as `num1Length`, `num2Length`.
-Step 3: Run while until any length variable is greater than or equal to zero.
-Step 4: Compute the iterated index value to additional variable as `num1Result`, `num2Result`.
-Step 5: IF index is greater than or equal to zero store the index value subtract with `0` zero string else numeric 0 zero.
-Step 6: Initialize `value` adding `num1Result` and `num2Result` module by 10
-Step 7: Update `carry` adding `num1Result` and `num2Result` divided by 10 with 
-Step 8: Append the `value` first to `result` variable as suffix.
-Step 9: decrement the `num1Length` and `num2Length`.
-Step 10: Append the `carry` first and `result` variable as suffix to the same result only if `carry` is not equal to `0`.
-Step 11: return computed string.
+### <AnchorLink label="Approach 1 Elementary Math" name />
+Step 1: Initialize `result` as empty string and `carry` as zero.<br />
+Step 2: Store both numbers length to additional variable as `num1Length`, `num2Length`.<br />
+Step 3: Run while until any length variable is greater than or equal to zero.<br />
+Step 4: Compute the iterated index value to additional variable as `num1Result`, `num2Result`.<br />
+Step 5: IF index is greater than or equal to zero store the index value subtract with `0` zero string else numeric 0 zero.<br />
+Step 6: Initialize `value` adding `num1Result` and `num2Result` module by 10<br />
+Step 7: Update `carry` adding `num1Result` and `num2Result` divided by 10 with <br />
+Step 8: Append the `value` first to `result` variable as suffix.<br />
+Step 9: decrement the `num1Length` and `num2Length`.<br />
+Step 10: Append the `carry` first and `result` variable as suffix to the same result only if `carry` is not equal to `0`.<br />
+Step 11: return computed string.<br />
 
 <CodeBlock>{`
 function addStrings(num1, num2) {
