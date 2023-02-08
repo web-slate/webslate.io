@@ -7,7 +7,7 @@ const AnchorLink = ({ label, url, name, anchor }) => {
   } else if (anchor) {
     aAttributes['href'] = `#${textToHyphenated(label)}`
   } else if (name) {
-    aAttributes['name'] = `${textToHyphenated(label)}`
+    aAttributes['name'] = (typeof name === 'boolean') ? `${textToHyphenated(label)}` : name;
   }
 
   return (
