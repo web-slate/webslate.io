@@ -22,13 +22,21 @@ export const MenuLinks = [
     url: getBlogHubPage('react'),
   },
   {
+    label: 'React Native',
+    url: getBlogHubPage('react-native'),
+  },
+  {
     label: 'Programming',
     url: getBlogHubPage('programming'),
   },
-  // {
-  //   label: 'Problems',
-  //   url: getBlogHubPage('problems'),
-  // },
+  {
+    label: 'Flutter',
+    url: getBlogHubPage('flutter'),
+  },
+  {
+    label: 'Problems',
+    url: getBlogHubPage('problems'),
+  },
   // {
   //   label: 'Data Structures',
   //   url: getBlogHubPage('data-structures'),
